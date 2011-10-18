@@ -3,3 +3,10 @@
 /jbmlib/Debug
 /java-litz-app/bin
 /.metadata
+/traj-test/Debug
+/trajui/debug
+/trajui/ui_trajectoryui.h
+/trajui/object_script.trajui.Debug
+/trajui/object_script.trajui.Release
+/trajui/Makefile.Debug
+/trajui/Makefile.Release

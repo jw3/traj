@@ -10,9 +10,11 @@
 #ifndef TRAJECTORY_H_
 #define TRAJECTORY_H_
 
+#include <string>
+
 extern "C"
 {
-#include <traj.h>
+#include <jbm/traj.h>
 }
 
 namespace traj
@@ -23,7 +25,10 @@ public:
 	virtual ~Trajectory();
 
 	void calculate();
-	void print();
+	std::string print();
+
+	double getVelocity() const;
+	void setVelocity(double);
 
 private:
 	lpTrajectory trajectory;

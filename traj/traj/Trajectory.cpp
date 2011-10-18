@@ -10,8 +10,9 @@
 
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 
-#include <utility.h>
+#include <jbm/utility.h>
 
 using namespace std;
 
@@ -20,13 +21,12 @@ traj::Trajectory::Trajectory()
 	trajectory = trajectory_create();
 
 	trajectory->velocity = 3400;
-
 	trajectory->weight = 55;
 	trajectory->wind.x = 0;
 	trajectory->wind.y = 0;
 	trajectory->wind.z = 0;
 	trajectory->chronodist = 7;
-	trajectory->sight_height = .13333333;
+	trajectory->sight_height = INTOFT(1.6);
 	trajectory->sight_offset = 0;
 	trajectory->speed = 5;  // target speed?
 	trajectory->speed_angle = 90;
@@ -62,6 +62,16 @@ traj::Trajectory::~Trajectory()
 	trajectory_destroy(trajectory);
 }
 
+double traj::Trajectory::getVelocity() const
+{
+	return trajectory->velocity = 3400;
+}
+
+void traj::Trajectory::setVelocity(double velocity)
+{
+	trajectory->velocity = 3400;
+}
+
 
 void traj::Trajectory::calculate()
 {
@@ -69,15 +79,16 @@ void traj::Trajectory::calculate()
 }
 
 
-void traj::Trajectory::print()
+std::string traj::Trajectory::print()
 {
+	std::stringstream ss;
 	int colw = 12;
-	cout << setw(colw) << "range" << setw(colw) << "V" << setw(colw) << "energy" << setw(colw) << "momentum" << setw(colw) << "drop" << setw(colw) << "wind" << setw(colw) << "lead" << endl;
+	ss << setw(colw) << "range" << setw(colw) << "V" << setw(colw) << "energy" << setw(colw) << "momentum" << setw(colw) << "drop" << setw(colw) << "wind" << setw(colw) << "lead" << endl;
 
 	int c = (trajectory->range_max - trajectory->range_min)/trajectory->range_inc;
 	for (int i = 0; i <= c; i++)
 	{
-		cout << setw(colw) << trajectory->ranges[i].range << setw(colw)
+		ss << setw(colw) << trajectory->ranges[i].range << setw(colw)
 		  << setw(colw) << trajectory->ranges[i].velocity << setw(colw)
 		  << setw(colw) << trajectory->ranges[i].energy << setw(colw)
 		  << setw(colw) << trajectory->ranges[i].momentum << setw(colw)
@@ -85,4 +96,6 @@ void traj::Trajectory::print()
 		  << setw(colw) << FTTOIN(trajectory->ranges[i].windage) << setw(colw)
 		  << setw(colw) << FTTOIN(trajectory->ranges[i].lead) << endl;
 	}
+
+	return ss.str();
 }
