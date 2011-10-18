@@ -24,7 +24,7 @@
 
 enum DRAGFUNC {g1, g2, g5, g6, g7, g8, gl, gi};
 
-static char *dragstr[] =
+static const char *dragstr[] =
   {"G1", "G2", "G5", "G6", "G7", "G8", "GL", "GI"};
 
 /* Drag functions */

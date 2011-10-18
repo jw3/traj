@@ -73,9 +73,19 @@ void traj::Trajectory::setVelocity(double velocity)
 }
 
 
-void traj::Trajectory::calculate()
+void traj::Trajectory::calculate(std::vector<TrajRangeData*>* vector)
 {
 	trajectory_calculate(trajectory);
+
+	if(NULL != vector)
+	{
+		int steps = (trajectory->range_max - trajectory->range_min)/trajectory->range_inc;
+		for (int i = 0; i < steps + 1; ++i)
+		{
+			TrajRangeData* data = new TrajRangeData(trajectory->ranges[i]);
+			vector->push_back(data);
+		}
+	}
 }
 
 
@@ -85,8 +95,8 @@ std::string traj::Trajectory::print()
 	int colw = 12;
 	ss << setw(colw) << "range" << setw(colw) << "V" << setw(colw) << "energy" << setw(colw) << "momentum" << setw(colw) << "drop" << setw(colw) << "wind" << setw(colw) << "lead" << endl;
 
-	int c = (trajectory->range_max - trajectory->range_min)/trajectory->range_inc;
-	for (int i = 0; i <= c; i++)
+	int steps = (trajectory->range_max - trajectory->range_min)/trajectory->range_inc;
+	for (int i = 0; i < steps + 1; ++i)
 	{
 		ss << setw(colw) << trajectory->ranges[i].range << setw(colw)
 		  << setw(colw) << trajectory->ranges[i].velocity << setw(colw)

@@ -10,7 +10,10 @@
 #ifndef TRAJECTORY_H_
 #define TRAJECTORY_H_
 
+#include <traj/TrajRangeData.h>
+
 #include <string>
+#include <vector>
 
 extern "C"
 {
@@ -24,7 +27,7 @@ public:
 	Trajectory();
 	virtual ~Trajectory();
 
-	void calculate();
+	void calculate(std::vector<TrajRangeData*>*);
 	std::string print();
 
 	double getVelocity() const;

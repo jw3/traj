@@ -4,6 +4,8 @@
 #include <QtGui/QDialog>
 #include "ui_trajectoryui.h"
 
+#include "tablemodel.h"
+
 class TrajectoryUI : public QDialog
 {
     Q_OBJECT
