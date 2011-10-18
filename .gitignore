@@ -10,3 +10,4 @@
 /trajui/object_script.trajui.Release
 /trajui/Makefile.Debug
 /trajui/Makefile.Release
+/trajui/ui_tablemodel.h
