@@ -3,6 +3,7 @@
 	<name>trajui</name>
 	<comment></comment>
 	<projects>
+		<project>traj</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
