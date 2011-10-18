@@ -22,19 +22,20 @@ extern "C"
 
 namespace traj
 {
-class Trajectory {
-public:
-	Trajectory();
-	virtual ~Trajectory();
+class Trajectory
+{
+	public:
+		Trajectory();
+		virtual ~Trajectory();
 
-	void calculate(std::vector<TrajRangeData*>*);
-	std::string print();
+		void calculate(std::vector<TrajRangeData*>*);
+		std::string print();
 
-	double getVelocity() const;
-	void setVelocity(double);
+		double getVelocity() const;
+		void setVelocity(double);
 
-private:
-	lpTrajectory trajectory;
+	private:
+		lpTrajectory trajectory;
 };
 }
 

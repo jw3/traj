@@ -1,22 +1,21 @@
-
 /*
-  Copyright (C) 2000 James B. Millard, jbm@cybermesa.com
+ Copyright (C) 2000 James B. Millard, jbm@cybermesa.com
 
-  This program is free software; you can redistribute it and/or
-  modify it under the terms of the GNU General Public License
-  as published by the Free Software Foundation; either version 2
-  of the License, or (at your option) any later version.
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
 
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-  You should have received a copy of the GNU General Public License
-  along with this program; if not, write to the Free Software
-  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  
-  02111-1307, USA.
-*/
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  
+ 02111-1307, USA.
+ */
 
 #ifndef _BCT_H_
 #define _BCT_H_
@@ -34,22 +33,22 @@
 #define BCT_VMAX     (4500.0)
 
 /* 
-  Safety value for endless loops.  It should never hit this
-  number of iterations...knock on wood.
-*/
+ Safety value for endless loops.  It should never hit this
+ number of iterations...knock on wood.
+ */
 #define BCT_ITMAX    (500)
 
 typedef struct
 {
-  double  nvel;
-  double  time;
-  double  dist;
-  enum    DRAGFUNC dragfunc;      /* {Drag function} */
-  double  (*drag)(double);
-  int     alc;
-  lpAtmos atmos;
-  double  bc;
-  double  fvel;
+		double nvel;
+		double time;
+		double dist;
+		enum DRAGFUNC dragfunc; /* {Drag function} */
+		double (*drag)(double);
+		int alc;
+		lpAtmos atmos;
+		double bc;
+		double fvel;
 } BCT, *lpBCT;
 
 #define BCT_SIZE  (sizeof(BCT))
@@ -62,5 +61,4 @@ int bct_getbc(lpBCT bct);
 int bct_calculate(lpBCT bct);
 
 #endif // _BCT_H_
-
 

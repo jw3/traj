@@ -1,22 +1,21 @@
-
 /*
-  Copyright (C) 2000 James B. Millard, jbm@cybermesa.com
+ Copyright (C) 2000 James B. Millard, jbm@cybermesa.com
 
-  This program is free software; you can redistribute it and/or
-  modify it under the terms of the GNU General Public License
-  as published by the Free Software Foundation; either version 2
-  of the License, or (at your option) any later version.
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
 
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-  You should have received a copy of the GNU General Public License
-  along with this program; if not, write to the Free Software
-  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  
-  02111-1307, USA.
-*/
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  
+ 02111-1307, USA.
+ */
 
 #ifndef _TRAJ_H_
 #define _TRAJ_H_
@@ -54,43 +53,43 @@
 #define  TRAJ_ENERGY(w, v)     (0.5*(w)*(v)*(v)/(-TRAJ_GM*7000.0))
 #define  TRAJ_MOMENTUM(w, v)   ((w)*(v)/(-TRAJ_GM*7000.0))
 
-typedef struct 
+typedef struct
 {
-  double range;
-  double velocity;
-  double energy;
-  double momentum;
-  double drop;
-  double windage;
-  double lead;
-  double time;
+		double range;
+		double velocity;
+		double energy;
+		double momentum;
+		double drop;
+		double windage;
+		double lead;
+		double time;
 } Range, *lpRange;
 
 #define  TRAJ_RANGE_SIZE   (sizeof(Range))
 
 typedef struct
 {
-  double    velocity;
-  double    chronodist;
-  double    weight;
-  double    azimuth;
-  double    elevation;
-  double    los_angle;
-  double    cant_angle;
-  double    sight_height;
-  double    sight_offset;
-  double    speed;
-  double    speed_angle;
-  int       range_min;
-  int       range_max;
-  int       range_inc;
-  Vector    zero;
-  Vector    wind;
-  Vector    gravity;
-  lpOptions options;
-  lpAtmos   atmos;
-  lpBC      bc;
-  lpRange   ranges;
+		double velocity;
+		double chronodist;
+		double weight;
+		double azimuth;
+		double elevation;
+		double los_angle;
+		double cant_angle;
+		double sight_height;
+		double sight_offset;
+		double speed;
+		double speed_angle;
+		int range_min;
+		int range_max;
+		int range_inc;
+		Vector zero;
+		Vector wind;
+		Vector gravity;
+		lpOptions options;
+		lpAtmos atmos;
+		lpBC bc;
+		lpRange ranges;
 } Trajectory, *lpTrajectory;
 
 #define TRAJ_TRAJECTORY_SIZE  (sizeof(Trajectory))

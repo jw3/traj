@@ -6,19 +6,20 @@
 
 #include "tablemodel.h"
 
-class TrajectoryUI : public QDialog
+class TrajectoryUI :
+		public QDialog
 {
-    Q_OBJECT
+	Q_OBJECT
 
-public:
-    TrajectoryUI(QWidget *parent = 0);
-    ~TrajectoryUI();
+	public:
+		TrajectoryUI(QWidget *parent = 0);
+		~TrajectoryUI();
 
-private slots:
-    void on_calculateButton_clicked();
+	private slots:
+		void on_calculateButton_clicked();
 
-private:
-    Ui::TrajectoryUIClass ui;
+	private:
+		Ui::TrajectoryUIClass ui;
 };
 
 #endif // TRAJECTORYUI_H

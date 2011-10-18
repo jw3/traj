@@ -5,7 +5,6 @@
  *      Author: wassj
  */
 
-
 #include "Trajectory.h"
 
 #include <iostream>
@@ -43,12 +42,12 @@ traj::Trajectory::Trajectory()
 	bc_setdragfunc(trajectory->bc, g1);
 	trajectory->atmos->temperature = ATMOS_TEMPSTD;
 	trajectory->atmos->pressure = ATMOS_PRESSSTD;
-	trajectory->atmos->humidity =  0;
-	trajectory->atmos->altitude =  0;
+	trajectory->atmos->humidity = 0;
+	trajectory->atmos->altitude = 0;
 
 	// no idea'r
-	trajectory->azimuth = 0;//RAD(BRACKETDEF(tmp, MIN_AZ, MAX_AZ, DEF_AZ)/60.0);
-	trajectory->elevation = 0;//RAD(BRACKETDEF(tmp, MIN_EL, MAX_EL, DEF_EL)/60.0);
+	trajectory->azimuth = 0;  //RAD(BRACKETDEF(tmp, MIN_AZ, MAX_AZ, DEF_AZ)/60.0);
+	trajectory->elevation = 0;  //RAD(BRACKETDEF(tmp, MIN_EL, MAX_EL, DEF_EL)/60.0);
 
 	options_setoption(trajectory->options, TRAJ_OPT_AZIM, true);
 	options_setoption(trajectory->options, TRAJ_OPT_ELEV, true);
@@ -72,39 +71,32 @@ void traj::Trajectory::setVelocity(double velocity)
 	trajectory->velocity = 3400;
 }
 
-
 void traj::Trajectory::calculate(std::vector<TrajRangeData*>* vector)
 {
 	trajectory_calculate(trajectory);
 
-	if(NULL != vector)
-	{
-		int steps = (trajectory->range_max - trajectory->range_min)/trajectory->range_inc;
-		for (int i = 0; i < steps + 1; ++i)
-		{
+	if (NULL != vector) {
+		int steps = (trajectory->range_max - trajectory->range_min) / trajectory->range_inc;
+		for (int i = 0; i < steps + 1; ++i) {
 			TrajRangeData* data = new TrajRangeData(trajectory->ranges[i]);
 			vector->push_back(data);
 		}
 	}
 }
 
-
 std::string traj::Trajectory::print()
 {
 	std::stringstream ss;
 	int colw = 12;
-	ss << setw(colw) << "range" << setw(colw) << "V" << setw(colw) << "energy" << setw(colw) << "momentum" << setw(colw) << "drop" << setw(colw) << "wind" << setw(colw) << "lead" << endl;
+	ss << setw(colw) << "range" << setw(colw) << "V" << setw(colw) << "energy" << setw(colw) << "momentum" << setw(colw) << "drop" << setw(colw) << "wind"
+			<< setw(colw) << "lead" << endl;
 
-	int steps = (trajectory->range_max - trajectory->range_min)/trajectory->range_inc;
-	for (int i = 0; i < steps + 1; ++i)
-	{
-		ss << setw(colw) << trajectory->ranges[i].range << setw(colw)
-		  << setw(colw) << trajectory->ranges[i].velocity << setw(colw)
-		  << setw(colw) << trajectory->ranges[i].energy << setw(colw)
-		  << setw(colw) << trajectory->ranges[i].momentum << setw(colw)
-		  << setw(colw) << FTTOIN(trajectory->ranges[i].drop) << setw(colw)
-		  << setw(colw) << FTTOIN(trajectory->ranges[i].windage) << setw(colw)
-		  << setw(colw) << FTTOIN(trajectory->ranges[i].lead) << endl;
+	int steps = (trajectory->range_max - trajectory->range_min) / trajectory->range_inc;
+	for (int i = 0; i < steps + 1; ++i) {
+		ss << setw(colw) << trajectory->ranges[i].range << setw(colw) << setw(colw) << trajectory->ranges[i].velocity << setw(colw) << setw(colw)
+				<< trajectory->ranges[i].energy << setw(colw) << setw(colw) << trajectory->ranges[i].momentum << setw(colw) << setw(colw)
+				<< FTTOIN(trajectory->ranges[i].drop) << setw(colw) << setw(colw) << FTTOIN(trajectory->ranges[i].windage) << setw(colw) << setw(colw)
+				<< FTTOIN(trajectory->ranges[i].lead) << endl;
 	}
 
 	return ss.str();
