@@ -30,7 +30,7 @@ void TrajectoryUI::on_calculateButton_clicked()
 	//
 	QString qstr(trajectory.print().c_str());
 	std::cout << qstr.toStdString() << std::endl;
-	ui.resultsTextEdit->setText(qstr);
+	//ui.resultsTextEdit->setText(qstr);
 	//
 	///////////////////////////////////////////////
 

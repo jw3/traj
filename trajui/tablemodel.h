@@ -3,7 +3,6 @@
 
 #include <QtGui/QWidget>
 #include <QAbstractTableModel>
-#include "ui_tablemodel.h"
 
 #include <vector>
 #include <traj/TrajRangeData.h>
@@ -27,7 +26,6 @@ class TableModel :
 		Qt::ItemFlags flags(const QModelIndex& index) const;
 
 	private:
-		Ui::TableModelClass ui;
 		std::vector<traj::TrajRangeData*> rangeData;
 };
 

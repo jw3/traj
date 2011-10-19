@@ -73,6 +73,9 @@
 		<pathentry base-ref="org.eclipse.cdt.make.core.DISCOVERED_SCANNER_INFO" include="C:/local/installs/MinGW/lib/gcc/i686-pc-mingw32/4.6.0/include" kind="inc" path="" system="true"/>
 		<pathentry base-ref="org.eclipse.cdt.make.core.DISCOVERED_SCANNER_INFO" include="C:/local/installs/MinGW/include" kind="inc" path="" system="true"/>
 		<pathentry base-ref="org.eclipse.cdt.make.core.DISCOVERED_SCANNER_INFO" include="C:/local/installs/MinGW/lib/gcc/i686-pc-mingw32/4.6.0/include-fixed" kind="inc" path="" system="true"/>
+		<pathentry base-ref="org.eclipse.cdt.make.core.DISCOVERED_SCANNER_INFO" include="C:/local/code/personal/traj/traj" kind="inc" path="" system="true"/>
+		<pathentry base-ref="org.eclipse.cdt.make.core.DISCOVERED_SCANNER_INFO" include="C:/local/code/personal/traj/trajui/debug" kind="inc" path="" system="true"/>
+		<pathentry base-ref="org.eclipse.cdt.make.core.DISCOVERED_SCANNER_INFO" include="C:/local/code/personal/traj/trajui" kind="inc" path="" system="true"/>
 		<pathentry kind="src" path=""/>
 		<pathentry kind="out" path=""/>
 		<pathentry kind="prj" path="/traj"/>
