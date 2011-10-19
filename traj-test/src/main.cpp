@@ -7,8 +7,8 @@ int main(int argc, char** argv)
 {
 	traj::Trajectory t;
 
-	t.calculate();
-	t.print();
+	//t.calculate();
+	//t.print();
 
 	return 0;
 }
