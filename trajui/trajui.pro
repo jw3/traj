@@ -8,8 +8,7 @@ HEADERS += tablemodel.h \
 SOURCES += tablemodel.cpp \
     main.cpp \
     trajectoryui.cpp
-FORMS += tablemodel.ui \
-    trajectoryui.ui
+FORMS += trajectoryui.ui
 RESOURCES += 
 LIBS += -L../traj/Debug -ltraj
 INCLUDEPATH += ../traj
