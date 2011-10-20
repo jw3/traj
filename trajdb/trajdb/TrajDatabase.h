@@ -8,7 +8,10 @@
 #ifndef TRAJDATABASE_H_
 #define TRAJDATABASE_H_
 
+#include <map>
 #include <string>
+
+#include "BulletData.h"
 
 struct sqlite3;
 
@@ -24,7 +27,7 @@ class TrajDatabase
 		bool connect();
 		void disconnect();
 
-		void getBullets();
+		std::map<int, BulletData> getBullets();
 
 		const char* getError() const { return !error.empty() ? error.c_str() : 0; }
 

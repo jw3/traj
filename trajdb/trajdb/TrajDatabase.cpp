@@ -10,8 +10,7 @@
 #include "TrajDatabase.h"
 #include "sqlite3.h"
 
-static int callback(void* returnVector, int count, char **values, char **cols);
-
+static int callback(void*, int, char**, char**);
 
 traj::TrajDatabase::TrajDatabase()
 		: db(0)
@@ -47,20 +46,25 @@ void traj::TrajDatabase::disconnect()
 	}
 }
 
-void traj::TrajDatabase::getBullets()
+std::map<int, traj::BulletData> traj::TrajDatabase::getBullets()
 {
-	char* err = 0;
-	int ec = sqlite3_exec(db, "SELECT count(*) FROM manufacturers", callback, 0, &err);
-	if (SQLITE_OK != ec) {
-		error = err;
-		sqlite3_free(err);
-		//return false;
+	std::map<int, traj::BulletData> data;
+	if (0 != db) {
+		char* err = 0;
+		int ec = sqlite3_exec(db, "SELECT count(*) FROM manufacturers", callback, &data, &err);
+		if (SQLITE_OK != ec) {
+			error = err;
+			sqlite3_free(err);
+			//return false;
+		}
 	}
-	//return true;
+	return data;
 }
 
-static int callback(void *NotUsed, int argc, char **argv, char **azColName)
+static int callback(void* pData, int argc, char** argv, char** azColName)
 {
+	std::map<int, traj::BulletData>* data = static_cast<std::map<int, traj::BulletData>*>(pData);
+
 	int i;
 	for (i = 0; i < argc; i++) {
 		std::cout << azColName[i] << (argv[i] ? argv[i] : "NULL") << std::endl;
