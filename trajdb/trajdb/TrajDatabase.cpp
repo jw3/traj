@@ -52,7 +52,7 @@ std::map<int, BulletData> TrajDatabase::getBullets(const char* where)
 	if (0 != db) {
 		char* err = 0;
 		std::string base = "SELECT * FROM bullets";
-		if(0 != where){
+		if (0 != where) {
 			base += " WHERE ";
 			base += where;
 		}
@@ -71,7 +71,7 @@ std::map<int, MfgData> TrajDatabase::getMfgs(const char* where)
 	if (0 != db) {
 		char* err = 0;
 		std::string base = "SELECT * FROM manufacturers";
-		if(0 != where){
+		if (0 != where) {
 			base += " WHERE ";
 			base += where;
 		}
@@ -84,7 +84,7 @@ std::map<int, MfgData> TrajDatabase::getMfgs(const char* where)
 	return mfgs;
 }
 
-// expected order: id, caliber, weight, bc, name, img, mfg
+// expected order: id, caliber, weight, bc, name, img, mfg, dragfx
 static int bulletQueryCallback(void* pMap, int c, char** v, char** col)
 {
 	std::map<int, BulletData>* map = static_cast<std::map<int, BulletData>*>(pMap);
@@ -128,6 +128,13 @@ static int bulletQueryCallback(void* pMap, int c, char** v, char** col)
 		ss << v[6];
 		ss >> mfg;
 		bullet.setManufacturer(mfg);
+		ss.clear();
+	}
+	{
+		int fx = 0;
+		ss << v[7];
+		ss >> fx;
+		bullet.setDragFx(static_cast<DRAGFUNC>(fx));
 		ss.clear();
 	}
 

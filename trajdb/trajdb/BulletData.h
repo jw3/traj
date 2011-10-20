@@ -1,6 +1,7 @@
 #ifndef BULLETDATA_H_
 #define BULLETDATA_H_
 
+#include <jbm/drag.h>
 #include <string>
 
 namespace traj
@@ -36,6 +37,9 @@ class BulletData
 		float getWeight() const;
 		void setWeight(float weight);
 
+		DRAGFUNC getDragFx() const;
+		void setDragFx(DRAGFUNC dragFx);
+
 	private:
 		int id;
 		float bc;
@@ -45,6 +49,7 @@ class BulletData
 		std::string name;
 		std::string model;
 		std::string image;
+		DRAGFUNC dragFx;
 
 		//caliber weight bc name model img mfg
 };

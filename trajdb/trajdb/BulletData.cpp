@@ -3,7 +3,7 @@
 using namespace traj;
 
 BulletData::BulletData()
-		: id(0), bc(0), weight(0), caliber(0)
+		: id(0), bc(0), weight(0), caliber(0), dragFx(g1)
 {
 }
 
@@ -105,3 +105,17 @@ void BulletData::setModel(const char* model)
 		this->model.clear();
 	}
 }
+
+DRAGFUNC traj::BulletData::getDragFx() const
+{
+	return dragFx;
+}
+
+
+
+void traj::BulletData::setDragFx(DRAGFUNC dragFx)
+{
+	this->dragFx = dragFx;
+}
+
+
