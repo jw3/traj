@@ -1,28 +1,26 @@
-/*
- * TrajDatabase.cpp
- *
- *  Created on: Oct 19, 2011
- *      Author: wassj
- */
-
 #include <iostream>
+#include <sstream>
+
+#include "sqlite3.h"
 
 #include "TrajDatabase.h"
-#include "sqlite3.h"
+#include "BulletData.h"
+
+using namespace traj;
 
 static int callback(void*, int, char**, char**);
 
-traj::TrajDatabase::TrajDatabase()
+TrajDatabase::TrajDatabase()
 		: db(0)
 {
 }
 
-traj::TrajDatabase::~TrajDatabase()
+TrajDatabase::~TrajDatabase()
 {
 	disconnect();
 }
 
-bool traj::TrajDatabase::connect()
+bool TrajDatabase::connect()
 {
 	if (0 == db) {
 		int ec = sqlite3_open("C:/local/code/personal/traj/trajdb/resources/trajdb.sqlite", &db);
@@ -38,7 +36,7 @@ bool traj::TrajDatabase::connect()
 	return false;
 }
 
-void traj::TrajDatabase::disconnect()
+void TrajDatabase::disconnect()
 {
 	if (0 != db) {
 		sqlite3_close(db);
@@ -46,12 +44,12 @@ void traj::TrajDatabase::disconnect()
 	}
 }
 
-std::map<int, traj::BulletData> traj::TrajDatabase::getBullets()
+std::map<int, BulletData> TrajDatabase::getBullets()
 {
-	std::map<int, traj::BulletData> data;
+	std::map<int, BulletData> data;
 	if (0 != db) {
 		char* err = 0;
-		int ec = sqlite3_exec(db, "SELECT count(*) FROM manufacturers", callback, &data, &err);
+		int ec = sqlite3_exec(db, "SELECT * FROM bullets", callback, &data, &err);
 		if (SQLITE_OK != ec) {
 			error = err;
 			sqlite3_free(err);
@@ -61,13 +59,54 @@ std::map<int, traj::BulletData> traj::TrajDatabase::getBullets()
 	return data;
 }
 
-static int callback(void* pData, int argc, char** argv, char** azColName)
+// expected order: id, caliber, weight, bc, name, img, mfg
+static int callback(void* pMap, int c, char** v, char** col)
 {
-	std::map<int, traj::BulletData>* data = static_cast<std::map<int, traj::BulletData>*>(pData);
+	std::map<int, BulletData>* map = static_cast<std::map<int, BulletData>*>(pMap);
+	std::stringstream ss;
 
-	int i;
-	for (i = 0; i < argc; i++) {
-		std::cout << azColName[i] << (argv[i] ? argv[i] : "NULL") << std::endl;
+	BulletData bullet;
+	{
+		int id = 0;
+		ss << v[0];
+		ss >> id;
+		bullet.setId(id);
+		ss.clear();
 	}
+	{
+		float caliber = 0;
+		ss << v[1];
+		ss >> caliber;
+		bullet.setCaliber(caliber);
+		ss.clear();
+	}
+	{
+		float weight = 0;
+		ss << v[2];
+		ss >> weight;
+		bullet.setWeight(weight);
+		ss.clear();
+	}
+	{
+		float bc = 0;
+		ss << v[3];
+		ss >> bc;
+		bullet.setBc(bc);
+		ss.clear();
+	}
+
+	bullet.setName(v[4]);
+	bullet.setImage(v[5]);
+
+	{
+		int mfg = 0;
+		ss << v[6];
+		ss >> mfg;
+		bullet.setManufacturer(mfg);
+		ss.clear();
+	}
+
+	map->insert(std::make_pair(bullet.getId(), bullet));
+
 	return 0;
 }

@@ -19,15 +19,39 @@ class BulletData
 		BulletData();
 		virtual ~BulletData();
 
+		float getBc() const;
+		void setBc(float bc);
+
+		float getCaliber() const;
+		void setCaliber(float caliber);
+
+		int getId() const;
+		void setId(int id);
+
+		const char* getImage() const;
+		void setImage(const char* image);
+
+		int getManufacturer() const;
+		void setManufacturer(int manufacturer);
+
+		const char* getModel() const;
+		void setModel(const char* model);
+
+		const char* getName() const;
+		void setName(const char* name);
+
+		float getWeight() const;
+		void setWeight(float weight);
+
 	private:
 		int id;
 		float bc;
 		float weight;
 		float caliber;
+		int manufacturer;
 		std::string name;
 		std::string model;
 		std::string image;
-		std::string manufacturer;
 
 		//caliber weight bc name model img mfg
 };
