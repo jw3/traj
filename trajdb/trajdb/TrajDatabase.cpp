@@ -5,10 +5,12 @@
 
 #include "TrajDatabase.h"
 #include "BulletData.h"
+#include "MfgData.h"
 
 using namespace traj;
 
-static int callback(void*, int, char**, char**);
+static int bulletQueryCallback(void*, int, char**, char**);
+static int mfgQueryCallback(void*, int, char**, char**);
 
 TrajDatabase::TrajDatabase()
 		: db(0)
@@ -44,23 +46,46 @@ void TrajDatabase::disconnect()
 	}
 }
 
-std::map<int, BulletData> TrajDatabase::getBullets()
+std::map<int, BulletData> TrajDatabase::getBullets(const char* where)
 {
-	std::map<int, BulletData> data;
+	std::map<int, BulletData> bullets;
 	if (0 != db) {
 		char* err = 0;
-		int ec = sqlite3_exec(db, "SELECT * FROM bullets", callback, &data, &err);
+		std::string base = "SELECT * FROM bullets";
+		if(0 != where){
+			base += " WHERE ";
+			base += where;
+		}
+		int ec = sqlite3_exec(db, base.c_str(), bulletQueryCallback, &bullets, &err);
 		if (SQLITE_OK != ec) {
 			error = err;
 			sqlite3_free(err);
-			//return false;
 		}
 	}
-	return data;
+	return bullets;
+}
+
+std::map<int, MfgData> TrajDatabase::getMfgs(const char* where)
+{
+	std::map<int, MfgData> mfgs;
+	if (0 != db) {
+		char* err = 0;
+		std::string base = "SELECT * FROM manufacturers";
+		if(0 != where){
+			base += " WHERE ";
+			base += where;
+		}
+		int ec = sqlite3_exec(db, base.c_str(), mfgQueryCallback, &mfgs, &err);
+		if (SQLITE_OK != ec) {
+			error = err;
+			sqlite3_free(err);
+		}
+	}
+	return mfgs;
 }
 
 // expected order: id, caliber, weight, bc, name, img, mfg
-static int callback(void* pMap, int c, char** v, char** col)
+static int bulletQueryCallback(void* pMap, int c, char** v, char** col)
 {
 	std::map<int, BulletData>* map = static_cast<std::map<int, BulletData>*>(pMap);
 	std::stringstream ss;
@@ -107,6 +132,27 @@ static int callback(void* pMap, int c, char** v, char** col)
 	}
 
 	map->insert(std::make_pair(bullet.getId(), bullet));
+
+	return 0;
+}
+
+// expected order: id, name
+static int mfgQueryCallback(void* pMap, int c, char** v, char** col)
+{
+	std::map<int, MfgData>* map = static_cast<std::map<int, MfgData>*>(pMap);
+	std::stringstream ss;
+
+	MfgData mfg;
+	{
+		int id = 0;
+		ss << v[0];
+		ss >> id;
+		mfg.setId(id);
+		ss.clear();
+	}
+	mfg.setName(v[1]);
+
+	map->insert(std::make_pair(mfg.getId(), mfg));
 
 	return 0;
 }

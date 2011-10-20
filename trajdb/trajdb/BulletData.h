@@ -1,10 +1,3 @@
-/*
- * BulletData.h
- *
- *  Created on: Oct 19, 2011
- *      Author: wassj
- */
-
 #ifndef BULLETDATA_H_
 #define BULLETDATA_H_
 

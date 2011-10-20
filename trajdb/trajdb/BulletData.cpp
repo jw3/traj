@@ -1,87 +1,87 @@
-/*
- * BulletData.cpp
- *
- *  Created on: Oct 19, 2011
- *      Author: wassj
- */
-
 #include "BulletData.h"
 
-traj::BulletData::BulletData()
+using namespace traj;
+
+BulletData::BulletData()
 		: id(0), bc(0), weight(0), caliber(0)
 {
 }
 
-traj::BulletData::~BulletData()
+BulletData::~BulletData()
 {
 }
 
-int traj::BulletData::getId() const
+int BulletData::getId() const
 {
 	return id;
 }
 
-void traj::BulletData::setId(int id)
+void BulletData::setId(int id)
 {
 	this->id = id;
 }
 
-const char* traj::BulletData::getName() const
+const char* BulletData::getName() const
 {
 	return name.c_str();
 }
 
-void traj::BulletData::setName(const char* name)
+void BulletData::setName(const char* name)
 {
-	this->name = name;
+	if (0 != name) {
+		this->name = name;
+	}
+	else {
+		this->name.clear();
+	}
 }
 
-float traj::BulletData::getBc() const
+float BulletData::getBc() const
 {
 	return bc;
 }
 
-void traj::BulletData::setBc(float bc)
+void BulletData::setBc(float bc)
 {
 	this->bc = bc;
 }
 
-float traj::BulletData::getCaliber() const
+float BulletData::getCaliber() const
 {
 	return caliber;
 }
 
-void traj::BulletData::setCaliber(float caliber)
+void BulletData::setCaliber(float caliber)
 {
 	this->caliber = caliber;
 }
 
-float traj::BulletData::getWeight() const
+float BulletData::getWeight() const
 {
 	return weight;
 }
 
-void traj::BulletData::setWeight(float weight)
+void BulletData::setWeight(float weight)
 {
 	this->weight = weight;
 }
 
-int traj::BulletData::getManufacturer() const
+int BulletData::getManufacturer() const
 {
 	return manufacturer;
 }
 
-void traj::BulletData::setManufacturer(int manufacturer)
+void BulletData::setManufacturer(int manufacturer)
 {
 	this->manufacturer = manufacturer;
 }
 
-const char* traj::BulletData::getImage() const
+const char* BulletData::getImage() const
 {
 	return image.c_str();
 }
 
-void traj::BulletData::setImage(const char* image)
+void BulletData::setImage(const char* image)
 {
 	if (0 != image) {
 		this->image = image;
@@ -91,12 +91,12 @@ void traj::BulletData::setImage(const char* image)
 	}
 }
 
-const char* traj::BulletData::getModel() const
+const char* BulletData::getModel() const
 {
 	return model.c_str();
 }
 
-void traj::BulletData::setModel(const char* model)
+void BulletData::setModel(const char* model)
 {
 	if (0 != model) {
 		this->model = model;
@@ -105,4 +105,3 @@ void traj::BulletData::setModel(const char* model)
 		this->model.clear();
 	}
 }
-
