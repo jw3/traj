@@ -2,12 +2,18 @@
 
 #include <traj/Trajectory.h>
 #include <traj/TrajRangeData.h>
+#include <trajdb/TrajDatabase.h>
+#include <trajdb/BulletData.h>
 
 #include <iostream>
 #include <vector>
+#include <map>
 
 #include <QtCore/QString>
 #include <QItemSelection>
+
+using namespace std;
+using namespace traj;
 
 TrajectoryUI::TrajectoryUI(QWidget *parent)
 		: QDialog(parent)
@@ -17,7 +23,6 @@ TrajectoryUI::TrajectoryUI(QWidget *parent)
 
 TrajectoryUI::~TrajectoryUI()
 {
-
 }
 
 void TrajectoryUI::on_calculateButton_clicked()

@@ -41,6 +41,7 @@
 	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 	<storageModule moduleId="org.eclipse.cdt.core.pathentry">
 		<pathentry base-path="traj" include="" kind="inc" path="" system="true"/>
+		<pathentry base-path="trajdb" include="" kind="inc" path="" system="true"/>
 		<pathentry base-path="C:/local/installs/Qt/4.7.4/include" include="" kind="inc" path="" system="true"/>
 		<pathentry base-path="C:/local/installs/Qt/4.7.4/include" include="ActiveQt" kind="inc" path="" system="true"/>
 		<pathentry base-path="C:/local/installs/Qt/4.7.4/include" include="phonon" kind="inc" path="" system="true"/>
@@ -79,5 +80,6 @@
 		<pathentry kind="src" path=""/>
 		<pathentry kind="out" path=""/>
 		<pathentry kind="prj" path="/traj"/>
+		<pathentry kind="prj" path="/trajdb"/>
 	</storageModule>
 </cproject>

@@ -9,6 +9,12 @@ SOURCES += tablemodel.cpp \
     main.cpp \
     trajectoryui.cpp
 FORMS += trajectoryui.ui
-RESOURCES += 
-LIBS += -L../traj/Debug -ltraj
-INCLUDEPATH += ../traj
+RESOURCES += rc.qrc
+LIBS += -L../traj/Debug \
+    -ltraj \
+    -L../trajdb/Debug \
+    -ltrajdb \
+    -L../trajdb/lib \
+    -lsqlite3
+INCLUDEPATH += ../traj \
+    ../trajdb

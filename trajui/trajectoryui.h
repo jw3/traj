@@ -6,6 +6,11 @@
 
 #include "tablemodel.h"
 
+namespace traj
+{
+class TrajDatabase;
+}
+
 class TrajectoryUI :
 		public QDialog
 {
@@ -20,6 +25,7 @@ class TrajectoryUI :
 
 	private:
 		Ui::TrajectoryUIClass ui;
+		traj::TrajDatabase* db;
 };
 
 #endif // TRAJECTORYUI_H

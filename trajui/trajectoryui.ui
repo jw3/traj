@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>391</height>
+    <width>720</width>
+    <height>390</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,29 +16,13 @@
   <property name="styleSheet">
    <string notr="true"/>
   </property>
-  <widget class="QPushButton" name="calculateButton">
-   <property name="geometry">
-    <rect>
-     <x>32</x>
-     <y>340</y>
-     <width>171</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string>calculate</string>
-   </property>
-  </widget>
   <widget class="QTableView" name="tableView">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>10</y>
-     <width>751</width>
-     <height>371</height>
+     <x>220</x>
+     <y>40</y>
+     <width>491</width>
+     <height>341</height>
     </rect>
    </property>
    <property name="editTriggers">
@@ -71,8 +55,8 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>221</width>
-     <height>311</height>
+     <width>201</width>
+     <height>371</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -85,142 +69,133 @@
     <enum>QFrame::Plain</enum>
    </property>
    <property name="currentIndex">
-    <number>3</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="profilesPage">
     <attribute name="label">
-     <string>Bullets</string>
+     <string>Profile</string>
     </attribute>
-    <widget class="QListView" name="listView">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>221</width>
-       <height>111</height>
+       <width>201</width>
+       <height>25</height>
       </rect>
      </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="1,0">
+      <item>
+       <widget class="QComboBox" name="comboBox"/>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <property name="spacing">
+         <number>3</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetMinAndMaxSize</enum>
+        </property>
+        <item>
+         <widget class="QPushButton" name="pushButton_3">
+          <property name="maximumSize">
+           <size>
+            <width>21</width>
+            <height>21</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="rc.qrc">
+            <normaloff>:/resources/save.png</normaloff>:/resources/save.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_4">
+          <property name="maximumSize">
+           <size>
+            <width>21</width>
+            <height>21</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="rc.qrc">
+            <normaloff>:/resources/cancel.png</normaloff>:/resources/cancel.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QListView" name="listView">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>120</y>
-       <width>93</width>
-       <height>28</height>
+       <x>0</x>
+       <y>30</y>
+       <width>201</width>
+       <height>221</height>
       </rect>
-     </property>
-     <property name="text">
-      <string>Load</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_2">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>120</y>
-       <width>93</width>
-       <height>28</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Edit</string>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="loadPage">
+   <widget class="QWidget" name="firearmPage">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>221</width>
-      <height>156</height>
+      <width>201</width>
+      <height>247</height>
      </rect>
     </property>
     <attribute name="label">
-     <string>Load</string>
+     <string>Firearm</string>
     </attribute>
     <widget class="QWidget" name="verticalLayoutWidget">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>221</width>
-       <height>88</height>
+       <width>201</width>
+       <height>131</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <layout class="QHBoxLayout" name="horizontalLayout_8">
         <item>
-         <widget class="QLabel" name="velocityLabel_5">
+         <widget class="QLabel" name="velocityLabel_8">
           <property name="text">
-           <string>Weight</string>
+           <string>Muzzel Velocity</string>
           </property>
          </widget>
         </item>
         <item>
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Minimum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>16</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="velocityLineEdit_5"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_23">
-        <item>
-         <widget class="QLabel" name="velocityLabel_22">
-          <property name="text">
-           <string>BC</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>88</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="velocityLineEdit_22"/>
-        </item>
-        <item>
-         <widget class="QComboBox" name="comboBox"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_7">
-        <item>
-         <widget class="QLabel" name="velocityLabel_7">
-          <property name="text">
-           <string>Velocity</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_3">
+         <spacer name="horizontalSpacer_17">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -236,7 +211,7 @@
          </spacer>
         </item>
         <item>
-         <spacer name="horizontalSpacer_4">
+         <spacer name="horizontalSpacer_18">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -252,46 +227,37 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLineEdit" name="velocityLineEdit_7"/>
+         <widget class="QLineEdit" name="velocityLineEdit_8"/>
         </item>
        </layout>
       </item>
-     </layout>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="firearmPage">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>221</width>
-      <height>156</height>
-     </rect>
-    </property>
-    <attribute name="label">
-     <string>Firearm</string>
-    </attribute>
-    <widget class="QWidget" name="verticalLayoutWidget_2">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>221</width>
-       <height>181</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
+       <layout class="QHBoxLayout" name="horizontalLayout_33">
         <item>
-         <widget class="QLabel" name="velocityLabel">
+         <widget class="QLabel" name="velocityLabel_33">
           <property name="text">
-           <string>Velocity</string>
+           <string>BC</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="velocityLineEdit"/>
+         <spacer name="horizontalSpacer_21">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>88</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="velocityLineEdit_33"/>
+        </item>
+        <item>
+         <widget class="QComboBox" name="comboBox_6"/>
         </item>
        </layout>
       </item>
@@ -300,9 +266,25 @@
         <item>
          <widget class="QLabel" name="velocityLabel_9">
           <property name="text">
-           <string>Velocity</string>
+           <string>Bullet Weight</string>
           </property>
          </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_22">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Minimum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>16</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item>
          <widget class="QLineEdit" name="velocityLineEdit_9"/>
@@ -310,58 +292,16 @@
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QLabel" name="velocityLabel_4">
+         <widget class="QLabel" name="velocityLabel">
           <property name="text">
-           <string>Velocity</string>
+           <string>Zero Range</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="velocityLineEdit_4"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_8">
-        <item>
-         <widget class="QLabel" name="velocityLabel_8">
-          <property name="text">
-           <string>Velocity</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="velocityLineEdit_8"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_6">
-        <item>
-         <widget class="QLabel" name="velocityLabel_6">
-          <property name="text">
-           <string>Velocity</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="velocityLineEdit_6"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="QLabel" name="velocityLabel_2">
-          <property name="text">
-           <string>Velocity</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="velocityLineEdit_2"/>
+         <widget class="QLineEdit" name="velocityLineEdit"/>
         </item>
        </layout>
       </item>
@@ -373,8 +313,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>221</width>
-      <height>156</height>
+      <width>201</width>
+      <height>247</height>
      </rect>
     </property>
     <attribute name="label">
@@ -385,8 +325,8 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>221</width>
-       <height>181</height>
+       <width>201</width>
+       <height>101</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -395,7 +335,7 @@
         <item>
          <widget class="QLabel" name="velocityLabel_12">
           <property name="text">
-           <string>Velocity</string>
+           <string>Sight Angle</string>
           </property>
          </widget>
         </item>
@@ -409,7 +349,7 @@
         <item>
          <widget class="QLabel" name="velocityLabel_10">
           <property name="text">
-           <string>Velocity</string>
+           <string>MoveSpeed</string>
           </property>
          </widget>
         </item>
@@ -423,54 +363,12 @@
         <item>
          <widget class="QLabel" name="velocityLabel_11">
           <property name="text">
-           <string>Velocity</string>
+           <string>Move Angle</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLineEdit" name="velocityLineEdit_11"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_15">
-        <item>
-         <widget class="QLabel" name="velocityLabel_15">
-          <property name="text">
-           <string>Velocity</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="velocityLineEdit_15"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_13">
-        <item>
-         <widget class="QLabel" name="velocityLabel_13">
-          <property name="text">
-           <string>Velocity</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="velocityLineEdit_13"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_14">
-        <item>
-         <widget class="QLabel" name="velocityLabel_14">
-          <property name="text">
-           <string>Velocity</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="velocityLineEdit_14"/>
         </item>
        </layout>
       </item>
@@ -482,23 +380,23 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>221</width>
-      <height>156</height>
+      <width>201</width>
+      <height>247</height>
      </rect>
     </property>
     <attribute name="label">
      <string>Environment</string>
     </attribute>
-    <widget class="QWidget" name="verticalLayoutWidget_4">
+    <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>221</width>
-       <height>181</height>
+       <width>201</width>
+       <height>119</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_4">
+     <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_17">
         <item>
@@ -507,6 +405,19 @@
            <string>Pressure</string>
           </property>
          </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>42</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item>
          <widget class="QLineEdit" name="velocityLineEdit_17"/>
@@ -523,6 +434,19 @@
          </widget>
         </item>
         <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>48</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
          <widget class="QLineEdit" name="velocityLineEdit_16"/>
         </item>
        </layout>
@@ -535,6 +459,19 @@
            <string>Temp</string>
           </property>
          </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>60</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item>
          <widget class="QLineEdit" name="velocityLineEdit_20"/>
@@ -551,35 +488,20 @@
          </widget>
         </item>
         <item>
+         <spacer name="horizontalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
          <widget class="QLineEdit" name="velocityLineEdit_19"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_18">
-        <item>
-         <widget class="QLabel" name="velocityLabel_18">
-          <property name="text">
-           <string>Velocity</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="velocityLineEdit_18"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_21">
-        <item>
-         <widget class="QLabel" name="velocityLabel_21">
-          <property name="text">
-           <string>Velocity</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="velocityLineEdit_21"/>
         </item>
        </layout>
       </item>
@@ -587,9 +509,127 @@
     </widget>
    </widget>
   </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>10</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="rc.qrc">
+     <normaloff>:/resources/reload.png</normaloff>:/resources/reload.png</iconset>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>10</y>
+     <width>401</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_34">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Min Range</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="spinBox">
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="maximum">
+         <number>3000</number>
+        </property>
+        <property name="singleStep">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Max Range</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="spinBox_2">
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>3000</number>
+        </property>
+        <property name="singleStep">
+         <number>50</number>
+        </property>
+        <property name="value">
+         <number>500</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Step Size</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="spinBox_3">
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="minimum">
+         <number>5</number>
+        </property>
+        <property name="maximum">
+         <number>250</number>
+        </property>
+        <property name="singleStep">
+         <number>25</number>
+        </property>
+        <property name="value">
+         <number>50</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="rc.qrc"/>
+ </resources>
  <connections/>
  <slots>
   <slot>reset()</slot>
