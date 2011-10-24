@@ -7,10 +7,6 @@ MfgData::MfgData()
 {
 }
 
-MfgData::~MfgData()
-{
-}
-
 int MfgData::getId() const
 {
 	return id;

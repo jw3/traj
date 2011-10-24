@@ -7,10 +7,6 @@ BulletData::BulletData()
 {
 }
 
-BulletData::~BulletData()
-{
-}
-
 int BulletData::getId() const
 {
 	return id;

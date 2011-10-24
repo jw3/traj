@@ -11,7 +11,7 @@ class BulletData
 {
 	public:
 		BulletData();
-		virtual ~BulletData();
+		~BulletData()=default;
 
 		float getBc() const;
 		void setBc(float bc);

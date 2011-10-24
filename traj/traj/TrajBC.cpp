@@ -19,7 +19,3 @@ traj::TrajBC::TrajBC(const BC& bc)
 	this->bc.bc = bc.bc;
 	bc_setdragfunc(&this->bc, bc.dragfunc);
 }
-
-traj::TrajBC::~TrajBC()
-{
-}

@@ -21,7 +21,7 @@ class TrajBC
 	public:
 		TrajBC();
 		TrajBC(const BC&);
-		virtual ~TrajBC();
+		virtual ~TrajBC()=default;
 
 		double getBC() const  { return bc.bc; }
 		void setBC(double bc) { this->bc.bc = bc; }

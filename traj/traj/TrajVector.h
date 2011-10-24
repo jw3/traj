@@ -23,7 +23,7 @@ class TrajVector
 		TrajVector(double, double, double);
 		TrajVector(const Vector&);
 
-		virtual ~TrajVector();
+		virtual ~TrajVector()=default;
 
 		double getX() const { return v.x; }
 		void setX(double x) { v.x = x; }

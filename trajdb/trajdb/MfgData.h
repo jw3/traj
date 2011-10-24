@@ -10,7 +10,7 @@ class MfgData
 {
 	public:
 		MfgData();
-		virtual ~MfgData();
+		~MfgData()=default;
 
 		int getId() const;
 		void setId(int id);

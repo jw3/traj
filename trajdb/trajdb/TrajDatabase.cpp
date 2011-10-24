@@ -27,7 +27,7 @@ bool TrajDatabase::connect()
 	if (0 == db) {
 		int ec = sqlite3_open("C:/local/code/personal/traj/trajdb/resources/trajdb.sqlite", &db);
 		if (SQLITE_OK == ec) {
-			std::cout << "connectedzzz" << std::endl;
+			std::cout << "[connected trajdb]" << std::endl;
 			return true;
 		}
 		error = sqlite3_errmsg(db);
@@ -42,7 +42,7 @@ void TrajDatabase::disconnect()
 {
 	if (0 != db) {
 		sqlite3_close(db);
-		std::cout << "disconnected" << std::endl;
+		std::cout << "[disconnected trajdb]" << std::endl;
 	}
 }
 

@@ -20,7 +20,7 @@ class TrajRangeData
 	public:
 		TrajRangeData();
 		TrajRangeData(const Range& range);
-		virtual ~TrajRangeData();
+		virtual ~TrajRangeData()=default;
 
 		double getDrop() const
 		{

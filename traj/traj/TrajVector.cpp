@@ -23,10 +23,6 @@ traj::TrajVector::TrajVector(const Vector& other)
 {
 }
 
-traj::TrajVector::~TrajVector()
-{
-}
-
 Vector traj::TrajVector::getVector() const
 {
 	return vector(v.x, v.y, v.z);

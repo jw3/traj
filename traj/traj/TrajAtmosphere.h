@@ -21,7 +21,7 @@ class TrajAtmosphere
 	public:
 		TrajAtmosphere();
 		TrajAtmosphere(const Atmos&);
-		virtual ~TrajAtmosphere();
+		~TrajAtmosphere()=default;
 
 		/* temperature in °F */
 		double getTemperature() const { return a.temperature; }

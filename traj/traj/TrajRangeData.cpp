@@ -17,7 +17,3 @@ traj::TrajRangeData::TrajRangeData(const Range& range)
 {
 }
 
-traj::TrajRangeData::~TrajRangeData()
-{
-}
-

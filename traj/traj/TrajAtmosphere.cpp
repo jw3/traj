@@ -22,7 +22,3 @@ traj::TrajAtmosphere::TrajAtmosphere(const Atmos& atmos)
 	a.pressure = atmos.pressure;
 	a.temperature = atmos.temperature;
 }
-
-traj::TrajAtmosphere::~TrajAtmosphere()
-{
-}
