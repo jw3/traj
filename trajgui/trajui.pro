@@ -26,10 +26,12 @@ INCLUDEPATH += ../traj \
     
 FORMS = TrajFrame.ui
 
-TARGET = trajgui
-MOC_DIR = ./build
-OBJECTS_DIR = ./build
 DESTDIR = ./build
+TARGET = trajgui
+MOC_DIR = $$DESTDIR
+UI_DIR = $$DESTDIR
+RCC_DIR = $$DESTDIR
+OBJECTS_DIR = $$DESTDIR
 
 CONFIG += qt debug uitools
 
