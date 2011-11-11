@@ -12,6 +12,7 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 
 #include "traj/TrajRangeData.h"
 #include "traj/TrajVector.h"
@@ -23,8 +24,13 @@ extern "C"
 #include <jbm/traj.h>
 }
 
+
+
 namespace traj
 {
+
+typedef std::vector<std::shared_ptr<TrajRangeData>> TrajectoryData;
+
 
 class Trajectory
 {
@@ -32,7 +38,7 @@ class Trajectory
 		Trajectory();
 		virtual ~Trajectory();
 
-		void calculate(std::vector<TrajRangeData*>*);
+		TrajectoryData calculate();
 		std::string print();
 
 		double getMinimumRange() const	{ return t->range_min; }

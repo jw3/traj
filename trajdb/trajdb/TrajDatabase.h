@@ -3,6 +3,7 @@
 
 #include <map>
 #include <string>
+#include "BulletData.h"
 
 struct sqlite3;
 

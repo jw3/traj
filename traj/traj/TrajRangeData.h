@@ -18,9 +18,8 @@ namespace traj
 class TrajRangeData
 {
 	public:
-		TrajRangeData();
 		TrajRangeData(const Range& range);
-		virtual ~TrajRangeData()=default;
+		~TrajRangeData()=default;
 
 		double getDrop() const
 		{

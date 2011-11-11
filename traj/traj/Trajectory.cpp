@@ -12,6 +12,7 @@
 #include <sstream>
 
 #include <jbm/utility.h>
+#include <traj/TrajRangeData.h>
 
 using namespace std;
 
@@ -61,17 +62,18 @@ traj::Trajectory::~Trajectory()
 	trajectory_destroy(t);
 }
 
-void traj::Trajectory::calculate(std::vector<TrajRangeData*>* vector)
+traj::TrajectoryData traj::Trajectory::calculate()
 {
 	trajectory_calculate(t);
 
-	if (NULL != vector) {
-		int steps = (t->range_max - t->range_min) / t->range_inc;
-		for (int i = 0; i < steps + 1; ++i) {
-			TrajRangeData* data = new TrajRangeData(t->ranges[i]);
-			vector->push_back(data);
-		}
+	TrajectoryData results;
+
+	int steps = (t->range_max - t->range_min) / t->range_inc;
+	for (int i = 0; i < steps + 1; ++i) {
+		results.push_back(make_shared<TrajRangeData>(t->ranges[i]));
 	}
+
+	return results;
 }
 
 std::string traj::Trajectory::print()

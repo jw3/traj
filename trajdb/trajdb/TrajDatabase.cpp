@@ -25,7 +25,7 @@ TrajDatabase::~TrajDatabase()
 bool TrajDatabase::connect()
 {
 	if (0 == db) {
-		int ec = sqlite3_open("C:/local/code/personal/traj/trajdb/resources/trajdb.sqlite", &db);
+		int ec = sqlite3_open("/home/wassj/code/personal/traj/trajdb/resources/trajdb.sqlite", &db);
 		if (SQLITE_OK == ec) {
 			std::cout << "[connected trajdb]" << std::endl;
 			return true;
@@ -34,6 +34,7 @@ bool TrajDatabase::connect()
 	}
 	else {
 		error = "already connected";
+		return true;
 	}
 	return false;
 }
