@@ -23,7 +23,7 @@ class TrajAtmosphere
 		TrajAtmosphere(const Atmos&);
 		~TrajAtmosphere()=default;
 
-		/* temperature in °F */
+		/* temperature in F */
 		double getTemperature() const { return a.temperature; }
 		void setTemperature(double t) { a.temperature = t; }
 

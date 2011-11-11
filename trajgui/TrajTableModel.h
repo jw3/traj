@@ -1,10 +1,17 @@
+/*
+ * TrajTableModel.h
+ *
+ *  Created on: Nov 11, 2011
+ *      Author: wassj
+ */
+
+
 #ifndef TABLEMODEL_H
 #define TABLEMODEL_H
 
 #include <QtGui/QWidget>
 #include <QAbstractTableModel>
 
-#include <vector>
 #include <traj/Trajectory.h>
 
 class TrajTableModel :

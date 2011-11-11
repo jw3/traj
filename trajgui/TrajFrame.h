@@ -1,3 +1,10 @@
+/*
+ * TrajFrame.h
+ *
+ *  Created on: Nov 11, 2011
+ *      Author: wassj
+ */
+
 #ifndef TRAJFRAME_H_
 #define TRAJFRAME_H_
 

@@ -1,10 +1,14 @@
+/*
+ * TrajTableView.h
+ *
+ *  Created on: Nov 11, 2011
+ *      Author: wassj
+ */
+
 #ifndef TRAJTABLEVIEW_H_
 #define TRAJTABLEVIEW_H_
 
 #include <QTableView>
-
-#include <vector>
-#include <memory>
 
 #include <traj/Trajectory.h>
 

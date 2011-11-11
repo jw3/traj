@@ -1,0 +1,31 @@
+
+Searchable Dual view of profiles/bullets
+	* A tree of bullets with profiles OR A tree a profiles with bullets
+	* a button to toggle the mode
+	* favorites (marked with a star in a item delegate)
+	
+Get the base velocity from the bullet data
+	
+Import data from xml
+Create bullets
+
+
+BulletTree
+* .22 55 gr HP
+  - My 22-250
+  - Paps 22-250
+* .308 168 gr HPBT
+  - dpms sass
+  - dpms 16"
+  - 300 wig mag
+  - 30-06
+* .458 325 FTX
+  - 45-70
+* 7mm 100 gr HP
+* .35 150 gr RN
+
+Profile Tree
+*  My 22-250
+  - .22 55 gr HP
+*  Paps 22-250
+  - .22 55 gr HP
