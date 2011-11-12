@@ -3,9 +3,12 @@
 #include <QtUiTools>
 
 #include <memory>
+#include <functional>
 
 #include <traj/Trajectory.h>
 #include <traj/TrajBC.h>
+
+#include "ValidationFields.h"
 
 TrajFrame::TrajFrame(QWidget* parent)
 		: QMainWindow(parent)

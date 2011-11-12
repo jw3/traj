@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1146</width>
-    <height>566</height>
+    <width>997</width>
+    <height>399</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -34,8 +34,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>337</width>
-         <height>376</height>
+         <width>292</width>
+         <height>209</height>
         </rect>
        </property>
        <attribute name="label">
@@ -84,19 +84,23 @@ p, li { white-space: pre-wrap; }
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QLineEdit" name="bcField"/>
+           <widget class="DoubleTextField" name="bcField"/>
           </item>
           <item row="3" column="1">
-           <widget class="QLineEdit" name="velocityField"/>
-          </item>
-          <item row="1" column="1">
-           <widget class="QLineEdit" name="lineEdit"/>
+           <widget class="DoubleTextField" name="velocityField">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
           </item>
           <item row="2" column="1">
-           <widget class="QLineEdit" name="lineEdit_2"/>
+           <widget class="DoubleTextField" name="weightField"/>
           </item>
           <item row="4" column="1">
-           <widget class="QLineEdit" name="lineEdit_3"/>
+           <widget class="DoubleTextField" name="chronoField"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QComboBox" name="dragCombo"/>
           </item>
          </layout>
         </item>
@@ -107,8 +111,8 @@ p, li { white-space: pre-wrap; }
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>337</width>
-         <height>376</height>
+         <width>292</width>
+         <height>209</height>
         </rect>
        </property>
        <attribute name="label">
@@ -153,19 +157,19 @@ p, li { white-space: pre-wrap; }
            </widget>
           </item>
           <item row="3" column="1">
-           <widget class="QLineEdit" name="sightHeightField"/>
+           <widget class="DoubleTextField" name="sightHeightField"/>
           </item>
           <item row="0" column="1">
-           <widget class="QLineEdit" name="zeroRangeField"/>
+           <widget class="IntegerTextField" name="zeroRangeField"/>
           </item>
           <item row="1" column="1">
-           <widget class="QLineEdit" name="maxRangeField"/>
+           <widget class="IntegerTextField" name="maxRangeField"/>
           </item>
           <item row="2" column="1">
-           <widget class="QLineEdit" name="rangeStepField"/>
+           <widget class="IntegerTextField" name="rangeStepField"/>
           </item>
           <item row="4" column="1">
-           <widget class="QLineEdit" name="lineEdit_4"/>
+           <widget class="DoubleTextField" name="targetAngleField"/>
           </item>
          </layout>
         </item>
@@ -228,22 +232,22 @@ p, li { white-space: pre-wrap; }
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QLineEdit" name="lineEdit_5"/>
+           <widget class="DoubleTextField" name="tempField"/>
           </item>
           <item row="1" column="1">
-           <widget class="QLineEdit" name="lineEdit_6"/>
+           <widget class="DoubleTextField" name="humidityField"/>
           </item>
           <item row="2" column="1">
-           <widget class="QLineEdit" name="lineEdit_7"/>
+           <widget class="DoubleTextField" name="altitudeField"/>
           </item>
           <item row="3" column="1">
-           <widget class="QLineEdit" name="lineEdit_8"/>
+           <widget class="DoubleTextField" name="pressureField"/>
           </item>
           <item row="4" column="1">
-           <widget class="QLineEdit" name="lineEdit_9"/>
+           <widget class="DoubleTextField" name="densityField"/>
           </item>
           <item row="5" column="1">
-           <widget class="QLineEdit" name="lineEdit_10"/>
+           <widget class="DoubleTextField" name="machField"/>
           </item>
           <item row="6" column="1">
            <widget class="QCheckBox" name="checkBox">
@@ -272,7 +276,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1146</width>
+     <width>997</width>
      <height>33</height>
     </rect>
    </property>
@@ -297,6 +301,16 @@ p, li { white-space: pre-wrap; }
    <class>TrajTableView</class>
    <extends>QTableView</extends>
    <header>TrajTableView.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DoubleTextField</class>
+   <extends>QLineEdit</extends>
+   <header>ValidationFields.h</header>
+  </customwidget>
+  <customwidget>
+   <class>IntegerTextField</class>
+   <extends>QLineEdit</extends>
+   <header>ValidationFields.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

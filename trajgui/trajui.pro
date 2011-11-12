@@ -6,7 +6,8 @@ QT += core \
     
 HEADERS += TrajTableModel.h \
 	TrajFrame.h \
-	TrajTableView.h
+	TrajTableView.h \
+	ValidationFields.h
 	
 SOURCES += TrajTableModel.cpp \
 	TrajFrame.cpp \
