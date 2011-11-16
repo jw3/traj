@@ -43,9 +43,10 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="autocombo"/>
-						<entry excluding="autocombo|vfield" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="vfield"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="autocombo"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="searchabletable"/>
+						<entry excluding="searchabletable|autocombo|vfield" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

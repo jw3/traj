@@ -3,12 +3,12 @@
 
 #include <map>
 #include <string>
-#include "BulletData.h"
 
 struct sqlite3;
 
 namespace traj
 {
+class CaliberData;
 class BulletData;
 class MfgData;
 
@@ -21,6 +21,7 @@ class TrajDatabase
 		bool connect();
 		void disconnect();
 
+		std::map<int, CaliberData> getCalibers(const char* where = 0);
 		std::map<int, BulletData> getBullets(const char* where = 0);
 		std::map<int, MfgData> getMfgs(const char* where = 0);
 
@@ -30,9 +31,9 @@ class TrajDatabase
 		}
 
 	private:
-		sqlite3 *db;
+		sqlite3* db;
 		std::string error;
 };
 
-} /* namespace traj */
+}
 #endif /* TRAJDATABASE_H_ */

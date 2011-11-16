@@ -16,8 +16,8 @@ class BulletData
 		float getBc() const;
 		void setBc(float bc);
 
-		float getCaliber() const;
-		void setCaliber(float caliber);
+		int getCaliber() const;
+		void setCaliber(int caliber);
 
 		int getId() const;
 		void setId(int id);

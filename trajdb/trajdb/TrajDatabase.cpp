@@ -1,14 +1,19 @@
 #include <iostream>
 #include <sstream>
+#include <functional>
 
 #include "sqlite3.h"
 
 #include "TrajDatabase.h"
+#include "CaliberData.h"
 #include "BulletData.h"
 #include "MfgData.h"
 
 using namespace traj;
 
+template<class T>
+static std::map<int, T> executeQuery(sqlite3*, sqlite3_callback, const char*, const char*, std::string&);
+static int caliberQueryCallback(void*, int, char**, char**);
 static int bulletQueryCallback(void*, int, char**, char**);
 static int mfgQueryCallback(void*, int, char**, char**);
 
@@ -47,42 +52,70 @@ void TrajDatabase::disconnect()
 	}
 }
 
+std::map<int, CaliberData> TrajDatabase::getCalibers(const char* where)
+{
+	return executeQuery<CaliberData>(db, caliberQueryCallback, "calibers", where, error);
+}
+
 std::map<int, BulletData> TrajDatabase::getBullets(const char* where)
 {
-	std::map<int, BulletData> bullets;
-	if (0 != db) {
-		char* err = 0;
-		std::string base = "SELECT * FROM bullets";
-		if (0 != where) {
-			base += " WHERE ";
-			base += where;
-		}
-		int ec = sqlite3_exec(db, base.c_str(), bulletQueryCallback, &bullets, &err);
-		if (SQLITE_OK != ec) {
-			error = err;
-			sqlite3_free(err);
-		}
-	}
-	return bullets;
+	return executeQuery<BulletData>(db, bulletQueryCallback, "bullets", where, error);
 }
 
 std::map<int, MfgData> TrajDatabase::getMfgs(const char* where)
 {
-	std::map<int, MfgData> mfgs;
+	return executeQuery<MfgData>(db, mfgQueryCallback, "manufacturers", where, error);
+}
+
+template <class T>
+static std::map<int, T> executeQuery(sqlite3* db, sqlite3_callback callback, const char* table, const char* where, std::string& error)
+{
+	std::map<int, T> data;
 	if (0 != db) {
 		char* err = 0;
-		std::string base = "SELECT * FROM manufacturers";
+		std::stringstream ss;
+		ss << "SELECT * FROM ";
+		ss << table;
 		if (0 != where) {
-			base += " WHERE ";
-			base += where;
+			ss << " WHERE ";
+			ss << where;
 		}
-		int ec = sqlite3_exec(db, base.c_str(), mfgQueryCallback, &mfgs, &err);
+		int ec = sqlite3_exec(db, ss.str().c_str(), callback, &data, &err);
 		if (SQLITE_OK != ec) {
 			error = err;
+			std::cout << "err, " << error << std::endl;
 			sqlite3_free(err);
 		}
 	}
-	return mfgs;
+	return data;
+}
+
+// expected order: id, caliber
+static int caliberQueryCallback(void* pMap, int c, char** v, char** col)
+{
+	std::map<int, CaliberData>* map = static_cast<std::map<int, CaliberData>*>(pMap);
+	std::stringstream ss;
+
+	CaliberData caliber;
+	{
+		int id = 0;
+		ss << v[0];
+		ss >> id;
+		caliber.setId(id);
+		ss.clear();
+	}
+	{
+		// hmm, interesting if this works..
+		decltype(caliber.getCaliber()) cal = 0;
+		ss << v[1];
+		ss >> cal;
+		caliber.setCaliber(cal);
+		ss.clear();
+	}
+
+	map->insert(std::make_pair(caliber.getId(), caliber));
+
+	return SQLITE_OK;
 }
 
 // expected order: id, caliber, weight, bc, name, img, mfg, dragfx
@@ -141,7 +174,7 @@ static int bulletQueryCallback(void* pMap, int c, char** v, char** col)
 
 	map->insert(std::make_pair(bullet.getId(), bullet));
 
-	return 0;
+	return SQLITE_OK;
 }
 
 // expected order: id, name
@@ -162,5 +195,5 @@ static int mfgQueryCallback(void* pMap, int c, char** v, char** col)
 
 	map->insert(std::make_pair(mfg.getId(), mfg));
 
-	return 0;
+	return SQLITE_OK;
 }

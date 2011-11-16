@@ -42,12 +42,12 @@ void BulletData::setBc(float bc)
 	this->bc = bc;
 }
 
-float BulletData::getCaliber() const
+int BulletData::getCaliber() const
 {
 	return caliber;
 }
 
-void BulletData::setCaliber(float caliber)
+void BulletData::setCaliber(int caliber)
 {
 	this->caliber = caliber;
 }
