@@ -10,8 +10,8 @@
 
 #include "ValidationFields.h"
 
-TrajFrame::TrajFrame(QWidget* parent)
-		: QMainWindow(parent)
+TrajFrame::TrajFrame(TrajBulletTreeModel& bulletModel, QWidget* parent)
+		: QMainWindow(parent), bulletModel(bulletModel)
 {
 	ui.setupUi(this);
 

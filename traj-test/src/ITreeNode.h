@@ -21,6 +21,7 @@ struct ITreeNode
 	virtual bool allowsChildren(void) const = 0;
 	virtual bool isLeaf(void) const = 0;
 
+
 	virtual void addChild(ITreeNode* node) = 0;
 	virtual void removeChild(ITreeNode* child) = 0;
 	virtual const std::vector<ITreeNode*>& getChildren(void) const = 0;
@@ -29,7 +30,7 @@ struct ITreeNode
 	virtual void setParent(ITreeNode* parent) = 0;
 
 	virtual bool operator==(const ITreeNode& other) const = 0;
-	//virtual std::string toString() const = 0;
+	virtual std::string toString() const = 0;
 };
 
 #endif /* ITREENODE_H_ */

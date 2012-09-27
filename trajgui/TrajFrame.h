@@ -17,13 +17,14 @@
 
 #include <trajdb/TrajDatabase.h>
 #include <traj/Trajectory.h>
+#include "TrajBulletTreeModel.h"
 
 class TrajFrame: public QMainWindow
 {
     Q_OBJECT
 
 	public:
-		TrajFrame(QWidget* parent = 0);
+		TrajFrame(TrajBulletTreeModel& bulletModel, QWidget* parent = 0);
 		virtual ~TrajFrame();
 
 	public slots:
@@ -36,6 +37,8 @@ class TrajFrame: public QMainWindow
 	private:
 		Ui::TrajFrame ui;
 		std::shared_ptr<traj::TrajDatabase> db;
+
+		TrajBulletTreeModel& bulletModel;
 };
 
 #endif /* TRAJFRAME_H_ */

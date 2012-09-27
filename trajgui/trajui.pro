@@ -1,17 +1,17 @@
 TEMPLATE = app
-
-QT += core \
-    gui \
-    sql
+QT += core gui
     
 HEADERS += TrajTableModel.h \
 	TrajFrame.h \
 	TrajTableView.h \
-	ValidationFields.h
+	ValidationFields.h \
+	TrajBulletTreeModel.h \
+	TreeNodes.h
 	
 SOURCES += TrajTableModel.cpp \
 	TrajFrame.cpp \
 	TrajTableView.cpp \
+	TrajBulletTreeModel.cpp \
     main.cpp
     
 RESOURCES += rc.qrc

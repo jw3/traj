@@ -1,5 +1,7 @@
 #include "BulletData.h"
 
+#include <sstream>
+
 using namespace traj;
 
 BulletData::BulletData()
@@ -114,4 +116,56 @@ void traj::BulletData::setDragFx(DRAGFUNC dragFx)
 	this->dragFx = dragFx;
 }
 
+int traj::BulletData::queryCallback(int c, char** v, char** col)
+{
+	std::stringstream ss;
 
+	{
+		int id = 0;
+		ss << v[0];
+		ss >> id;
+		this->setId(id);
+		ss.clear();
+	}
+	{
+		float caliber = 0;
+		ss << v[1];
+		ss >> caliber;
+		this->setCaliber(caliber);
+		ss.clear();
+	}
+	{
+		float weight = 0;
+		ss << v[2];
+		ss >> weight;
+		this->setWeight(weight);
+		ss.clear();
+	}
+	{
+		float bc = 0;
+		ss << v[3];
+		ss >> bc;
+		this->setBc(bc);
+		ss.clear();
+	}
+
+	this->setName(v[4]);
+	this->setImage(v[5]);
+
+	{
+		int mfg = 0;
+		ss << v[6];
+		ss >> mfg;
+		this->setManufacturer(mfg);
+		ss.clear();
+	}
+	{
+		int fx = 0;
+		ss << v[7];
+		ss >> fx;
+		this->setDragFx(static_cast<DRAGFUNC>(fx));
+		ss.clear();
+	}
+
+	return 0;
+}

@@ -1,60 +1,76 @@
 #include <iostream>
-#include <sstream>
+#include <string>
 #include <map>
 
-#include "traj/Trajectory.h"
+#include <trajdb/TrajDatabase.h>
 
-#include "trajdb/TrajDatabase.h"
-#include "trajdb/BulletData.h"
-#include "trajdb/MfgData.h"
+#include <trajdb/MfgData.h>
+#include <trajdb/BulletData.h>
+#include <trajdb/CaliberData.h>
 
-#include "jbm/drag.h"
+#include "ITreeNode.h"
+#include "DefaultTreeNode.h"
 
 using namespace std;
 using namespace traj;
 
-int main(int argc, char **argv)
+
+void printTree(ITreeNode& node, int depth = 0)
 {
+	for (int i = 0; i < depth; ++i) {
+		cout << " ";
+	}
+
+	cout << (node.isLeaf() ? "-" : "+") << node.toString();
+	if(!node.isLeaf()){
+		cout << "(" << node.childCount() << ")";
+	}
+	cout << endl;
+
+	if (node.childCount() > 0) {
+		for (auto child : node.getChildren()) {
+			printTree(*child, depth + 1);
+		}
+	}
+}
+
+
+int main(int c, char** v)
+{
+	//QApplication app(c, v);
+
+	//app.setApplicationName("Traj");
+
 	TrajDatabase db;
-	db.connect();
-	map<int, MfgData> mfgs = db.getMfgs("name = 'Sierra'");
+	if (!db.connect()) {
+		cout << "Error connecting to db, " << db.getError() << endl;
+		return 1;
+	}
 
-	map<int, MfgData>::iterator mfgIter;
-	for (mfgIter = mfgs.begin(); mfgIter != mfgs.end(); mfgIter++) {
-		const MfgData& mfg = mfgIter->second;
-		cout << "Mfg(" << mfg.getId() << ")" << endl << "\tName: " << mfg.getName() << endl;
+	auto calibers = db.list<CaliberData>();
 
-		stringstream ss;
-		ss << "mfg=";
-		ss << mfg.getId();
+	DefaultTreeNode<std::string> root("root");
+	for (auto calPair : calibers) {
+		auto cal = calPair.second;
+		DefaultTreeNode<float>* caliberNode = new DefaultTreeNode<float>(cal->getCaliber());
+		root.addChild(caliberNode);
 
-		map<int, BulletData> bullets = db.getBullets(ss.str().c_str());
-		map<int, BulletData>::iterator bulletIter;
-		for (bulletIter = bullets.begin(); bulletIter != bullets.end(); bulletIter++) {
-			const BulletData& bullet = bulletIter->second;
-
-			cout << "Bullet(" << bullet.getId() << ")" << endl;
-			cout << "\tName: " << bullet.getName() << endl;
-			cout << "\tWeight: " << bullet.getWeight() << endl;
-			cout << "\tBC: " << bullet.getBc() << endl;
-
-			const char* dragStr = dragstr[bullet.getDragFx()];
-			cout << "\tFx: " << dragStr << endl;
+		std::stringstream where;
+		where << "caliber=";
+		where << cal->getId();
+		auto bullets = db.getBullets(where.str().c_str());
+		for (auto bulletPair : bullets) {
+			auto bullet = bulletPair.second;
+			DefaultTreeNode<std::string>* bulletNode = new DefaultTreeNode<std::string>(bullet.getName());
+			caliberNode->addChild(bulletNode);
 		}
 	}
 
-	// some cool c++11 stuff
-//	for (auto bullet_entry : bullets) {
-//		const BulletData& bullet = bullet_entry.second;
-//		cout << "Bullet(" << bullet.getId() << ")" << endl
-//				<< "\tName: " << bullet.getName() << endl
-//				<< "\tWeight: " << bullet.getWeight()
-//				<< endl << "\tBC: "
-//				<< bullet.getBc() << endl;
-//	}
-//
-//	auto f = [] () {cout << "in lambda" << endl;};
-//	f();
+	printTree(root);
 
+//TrajFrame f;
+//f.show();
+
+//return app.exec();
 	return 0;
 }

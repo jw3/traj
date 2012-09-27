@@ -2,8 +2,6 @@
 #include <sstream>
 #include <functional>
 
-#include "sqlite3.h"
-
 #include "TrajDatabase.h"
 #include "CaliberData.h"
 #include "BulletData.h"
@@ -20,6 +18,9 @@ static int mfgQueryCallback(void*, int, char**, char**);
 TrajDatabase::TrajDatabase()
 		: db(0)
 {
+	tables.insert(std::make_pair(typeid(BulletData).name(), "bullets"));
+	tables.insert(std::make_pair(typeid(CaliberData).name(), "calibers"));
+	tables.insert(std::make_pair(typeid(MfgData).name(), "manufacturers"));
 }
 
 TrajDatabase::~TrajDatabase()
@@ -51,6 +52,12 @@ void TrajDatabase::disconnect()
 		std::cout << "[disconnected trajdb]" << std::endl;
 	}
 }
+
+const char* TrajDatabase::getError() const
+{
+	return !error.empty() ? error.c_str() : 0;
+}
+
 
 std::map<int, CaliberData> TrajDatabase::getCalibers(const char* where)
 {

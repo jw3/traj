@@ -7,8 +7,9 @@
 
 #include "CaliberData.h"
 
-namespace traj
-{
+#include <sstream>
+
+using namespace traj;
 
 CaliberData::CaliberData()
 		: id(0), caliber(0)
@@ -35,4 +36,23 @@ void CaliberData::setCaliber(float caliber)
 	this->caliber = caliber;
 }
 
+int CaliberData::queryCallback(int c, char** v, char** col)
+{
+	std::stringstream ss;
+	{
+		int id = 0;
+		ss << v[0];
+		ss >> id;
+		this->setId(id);
+		ss.clear();
+	}
+	{
+		// hmm, interesting if this works..
+		decltype(this->getCaliber()) cal = 0;
+		ss << v[1];
+		ss >> cal;
+		this->setCaliber(cal);
+		ss.clear();
+	}
+	return 0;
 }

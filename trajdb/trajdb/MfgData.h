@@ -3,10 +3,12 @@
 
 #include <string>
 
+#include "IConcept.h"
+
 namespace traj
 {
 
-class MfgData
+class MfgData : public IConcept
 {
 	public:
 		MfgData();
@@ -17,6 +19,8 @@ class MfgData
 
 		const char* getName() const;
 		void setName(const char* name);
+
+		virtual int queryCallback(int, char**, char**);
 
 	private:
 		int id;

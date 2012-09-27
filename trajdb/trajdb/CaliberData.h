@@ -8,20 +8,24 @@
 #ifndef CALIBERDATA_H_
 #define CALIBERDATA_H_
 
+#include "IConcept.h"
+
 namespace traj
 {
 
-class CaliberData
+class CaliberData : public IConcept
 {
 	public:
 		CaliberData();
 		~CaliberData()=default;
 
-		int getId() const;
+		virtual int getId() const;
 		void setId(int id);
 
 		float getCaliber() const;
 		void setCaliber(float caliber);
+
+		virtual int queryCallback(int, char**, char**);
 
 	private:
 		int id;

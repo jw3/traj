@@ -10,16 +10,8 @@
 
 #include <QAbstractItemModel>
 
-#include <map>
-#include <string>
-
-
-typedef double Caliber;
-typedef std::string Bullet;
-typedef std::string Profile;
-
-typedef std::multimap<Caliber, Bullet> Calibers;
-typedef std::multimap<Bullet, Profile> Profiles;
+#include <trajdb/TrajDatabase.h>
+#include "TreeNodes.h"
 
 class TrajBulletTreeModel :
 		public QAbstractItemModel
@@ -36,11 +28,10 @@ class TrajBulletTreeModel :
 		virtual QModelIndex parent(const QModelIndex & index) const;
 		virtual int rowCount(const QModelIndex & parent = QModelIndex()) const;
 
-	private:
-		ITreeNode& root;
+		bool init(traj::TrajDatabase&);
 
-		Calibers calibers;
-		Profiles profiles;
+	private:
+		RootNode* root;
 };
 
 #endif /* TRAJBULLETMODEL_H_ */

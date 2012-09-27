@@ -4,10 +4,12 @@
 #include <jbm/drag.h>
 #include <string>
 
+#include "IConcept.h"
+
 namespace traj
 {
 
-class BulletData
+class BulletData : public IConcept
 {
 	public:
 		BulletData();
@@ -19,8 +21,8 @@ class BulletData
 		int getCaliber() const;
 		void setCaliber(int caliber);
 
-		int getId() const;
-		void setId(int id);
+		virtual int getId() const;
+		virtual void setId(int id);
 
 		const char* getImage() const;
 		void setImage(const char* image);
@@ -39,6 +41,8 @@ class BulletData
 
 		DRAGFUNC getDragFx() const;
 		void setDragFx(DRAGFUNC dragFx);
+
+		virtual int queryCallback(int, char**, char**);
 
 	private:
 		int id;
