@@ -32,8 +32,9 @@ int main(int c, char** v)
 	TrajBulletTreeModel bulletModel;
 	bulletModel.init(db);
 
-	TrajFrame f(bulletModel);
+	TrajFrame f(&bulletModel);
 	f.show();
 
-	return app.exec();
+	int exex = app.exec();
+	return exex;
 }

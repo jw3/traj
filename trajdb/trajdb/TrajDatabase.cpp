@@ -129,10 +129,10 @@ static int caliberQueryCallback(void* pMap, int c, char** v, char** col)
 static int bulletQueryCallback(void* pMap, int c, char** v, char** col)
 {
 	std::map<int, BulletData>* map = static_cast<std::map<int, BulletData>*>(pMap);
-	std::stringstream ss;
 
 	BulletData bullet;
 	{
+		std::stringstream ss;
 		int id = 0;
 		ss << v[0];
 		ss >> id;
@@ -140,6 +140,7 @@ static int bulletQueryCallback(void* pMap, int c, char** v, char** col)
 		ss.clear();
 	}
 	{
+		std::stringstream ss;
 		float caliber = 0;
 		ss << v[1];
 		ss >> caliber;
@@ -147,6 +148,7 @@ static int bulletQueryCallback(void* pMap, int c, char** v, char** col)
 		ss.clear();
 	}
 	{
+		std::stringstream ss;
 		float weight = 0;
 		ss << v[2];
 		ss >> weight;
@@ -154,6 +156,7 @@ static int bulletQueryCallback(void* pMap, int c, char** v, char** col)
 		ss.clear();
 	}
 	{
+		std::stringstream ss;
 		float bc = 0;
 		ss << v[3];
 		ss >> bc;
@@ -162,18 +165,22 @@ static int bulletQueryCallback(void* pMap, int c, char** v, char** col)
 	}
 
 	bullet.setName(v[4]);
-	bullet.setImage(v[5]);
+	// model = 5
+	bullet.setImage(v[6]);
 
 	{
+		std::stringstream ss;
 		int mfg = 0;
-		ss << v[6];
+		ss << v[7];
+		std::cout << ss.str() << std::endl;
 		ss >> mfg;
 		bullet.setManufacturer(mfg);
 		ss.clear();
 	}
 	{
+		std::stringstream ss;
 		int fx = 0;
-		ss << v[7];
+		ss << v[8];
 		ss >> fx;
 		bullet.setDragFx(static_cast<DRAGFUNC>(fx));
 		ss.clear();

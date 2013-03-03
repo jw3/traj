@@ -10,10 +10,12 @@
 
 #include "ValidationFields.h"
 
-TrajFrame::TrajFrame(TrajBulletTreeModel& bulletModel, QWidget* parent)
+TrajFrame::TrajFrame(TrajBulletTreeModel* bulletModel, QWidget* parent)
 		: QMainWindow(parent), bulletModel(bulletModel)
 {
 	ui.setupUi(this);
+
+	ui.bulletCombo->setModel(bulletModel);
 
 	connect(ui.bcField, SIGNAL(returnPressed()), this, SLOT(calculateTrajectory()));
 	connect(this, SIGNAL(trajectoryUpdated(const traj::TrajectoryData&)), ui.tableView, SLOT(trajectoryChanged(const traj::TrajectoryData&)));

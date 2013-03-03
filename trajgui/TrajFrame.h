@@ -24,7 +24,7 @@ class TrajFrame: public QMainWindow
     Q_OBJECT
 
 	public:
-		TrajFrame(TrajBulletTreeModel& bulletModel, QWidget* parent = 0);
+		TrajFrame(TrajBulletTreeModel* bulletModel, QWidget* parent = 0);
 		virtual ~TrajFrame();
 
 	public slots:
@@ -38,7 +38,7 @@ class TrajFrame: public QMainWindow
 		Ui::TrajFrame ui;
 		std::shared_ptr<traj::TrajDatabase> db;
 
-		TrajBulletTreeModel& bulletModel;
+		TrajBulletTreeModel* bulletModel;
 };
 
 #endif /* TRAJFRAME_H_ */

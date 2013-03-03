@@ -16,6 +16,8 @@
 
 #include "ITreeNode.h"
 
+#include <iostream>
+
 struct IVariantNode
 {
 	virtual ~IVariantNode() {}
@@ -39,11 +41,20 @@ class DefaultTreeNode : public ITreeNode, public IVariantNode
 
 		virtual ITreeNode* child(unsigned int idx) const
 		{
+			std::cout << this << "children: " << children.size() << std::endl;
 			if (idx < children.size()) {
 				return children[idx];
 			}
 			return nullptr;
 		}
+
+		virtual int row() const
+		 {
+		     if (parent)
+		         return parent->indexOf(*this);
+
+		     return 0;
+		 }
 
 		virtual unsigned int childCount(void) const
 		{

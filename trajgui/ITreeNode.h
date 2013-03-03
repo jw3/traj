@@ -20,6 +20,7 @@ struct ITreeNode
 	virtual int indexOf(const ITreeNode&) const = 0;
 	virtual bool allowsChildren(void) const = 0;
 	virtual bool isLeaf(void) const = 0;
+	virtual int row() const = 0;
 
 	virtual void addChild(ITreeNode* node) = 0;
 	virtual void removeChild(ITreeNode* child) = 0;
