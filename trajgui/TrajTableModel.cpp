@@ -1,7 +1,5 @@
 #include "TrajTableModel.h"
 
-#include <iostream>
-
 TrajTableModel::TrajTableModel(QWidget* parent)
 		: QAbstractTableModel(parent)
 {

@@ -9,7 +9,6 @@
 
 #include <map>
 #include <string>
-#include <iostream>
 
 #include <trajdb/MfgData.h>
 #include <trajdb/BulletData.h>
@@ -79,24 +78,21 @@ QModelIndex TrajBulletTreeModel::parent(const QModelIndex& index) const
 	ITreeNode *childItem = static_cast<ITreeNode*>(index.internalPointer());
 	ITreeNode *parentItem = childItem->getParent();
 
-	if (parentItem == root)
+	if (parentItem == root){
 		return QModelIndex();
-
+	}
 	return createIndex(parentItem->row(), 0, parentItem);
 }
 
 int TrajBulletTreeModel::rowCount(const QModelIndex& parent) const
 {
-	if (parent.column()) {
-//		return 0;
-	}
-
 	ITreeNode *parentItem;
-	if (!parent.isValid())
+	if (!parent.isValid()){
 		parentItem = static_cast<ITreeNode*>(root);
-	else
+	}
+	else{
 		parentItem = static_cast<ITreeNode*>(parent.internalPointer());
-
+	}
 	return parentItem->childCount();
 }
 
@@ -123,7 +119,7 @@ bool TrajBulletTreeModel::init(traj::TrajDatabase& db)
 
 			auto result = mfgs.find(bullet.getManufacturer());
 
-			std::cout << bullet.getManufacturer() << ": " << mfgs.count(bullet.getManufacturer()) << std::endl;
+			//std::cout << bullet.getManufacturer() << ": " << mfgs.count(bullet.getManufacturer()) << std::endl;
 
 			if(result != mfgs.end()){
 				bulletName << result->second.getName() << " ";

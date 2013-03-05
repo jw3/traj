@@ -16,7 +16,6 @@
 
 #include "ITreeNode.h"
 
-#include <iostream>
 
 struct IVariantNode
 {
@@ -41,7 +40,6 @@ class DefaultTreeNode : public ITreeNode, public IVariantNode
 
 		virtual ITreeNode* child(unsigned int idx) const
 		{
-			std::cout << this << "children: " << children.size() << std::endl;
 			if (idx < children.size()) {
 				return children[idx];
 			}

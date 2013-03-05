@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>997</width>
-    <height>399</height>
+    <width>1106</width>
+    <height>791</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,274 +23,427 @@
    <property name="autoFillBackground">
     <bool>false</bool>
    </property>
-   <layout class="QGridLayout" name="gridLayout_4" columnstretch="3,7">
-    <item row="0" column="0">
-     <widget class="QToolBox" name="toolBox">
-      <property name="currentIndex">
-       <number>0</number>
+   <widget class="QTreeView" name="bulletTreeView">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>401</width>
+      <height>351</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="TrajTableView" name="tableView">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>420</y>
+      <width>1081</width>
+      <height>311</height>
+     </rect>
+    </property>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+   </widget>
+   <widget class="QFrame" name="toolbarFrame">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>370</y>
+      <width>1081</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QWidget" name="gridLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>920</x>
+       <y>0</y>
+       <width>161</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetDefaultConstraint</enum>
       </property>
-      <widget class="QWidget" name="page">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>292</width>
-         <height>243</height>
-        </rect>
-       </property>
-       <attribute name="label">
-        <string>Bullet</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout">
-        <item row="0" column="0">
-         <layout class="QFormLayout" name="formLayout_2">
-          <property name="fieldGrowthPolicy">
-           <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-          </property>
-          <item row="0" column="0">
-           <widget class="QLabel" name="bcLabel">
-            <property name="text">
-             <string>BC</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="DoubleTextField" name="bcField"/>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_3">
-            <property name="text">
-             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+      <item row="0" column="2">
+       <widget class="QComboBox" name="rangeStepCombo">
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+        <property name="currentIndex">
+         <number>3</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>25</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>50</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>75</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>100</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>200</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>250</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>500</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_12">
+        <property name="text">
+         <string>Range Step</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QToolButton" name="toolButton">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>10</y>
+       <width>31</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>PDF</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_2">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>10</y>
+       <width>31</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>CSV</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_3">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>10</y>
+       <width>31</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Print</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>41</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Refresh</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="horizontalLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>750</x>
+       <y>0</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="maxRangeLabel">
+        <property name="text">
+         <string>Max Range</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="maxRangeField">
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+        <property name="currentIndex">
+         <number>2</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>100</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>200</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>500</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>1000</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>3000</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>50</y>
+      <width>197</width>
+      <height>86</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="2" column="1">
+        <widget class="QComboBox" name="dragCombo"/>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:10pt; font-weight:200; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Drag &lt;span style=&quot; font-style:italic;&quot;&gt;f(x)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QComboBox" name="dragCombo"/>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="label">
-            <property name="text">
-             <string>Weight</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="DoubleTextField" name="weightField"/>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="velLabel">
-            <property name="text">
-             <string>Velocity</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="DoubleTextField" name="velocityField">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="label_2">
-            <property name="text">
-             <string>Chrono</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="DoubleTextField" name="chronoField"/>
-          </item>
-          <item row="5" column="1">
-           <widget class="QComboBox" name="bulletCombo"/>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="page_2">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>292</width>
-         <height>243</height>
-        </rect>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QDoubleSpinBox" name="doubleSpinBox_2"/>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Weight</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_13">
+         <property name="acceptDrops">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="text">
+          <string>BC</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QDoubleSpinBox" name="bcField"/>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="formLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>740</x>
+      <y>20</y>
+      <width>341</width>
+      <height>320</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout_4">
+     <property name="fieldGrowthPolicy">
+      <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="velLabel">
+       <property name="text">
+        <string>Velocity</string>
        </property>
-       <attribute name="label">
-        <string>Aim</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
-         <layout class="QFormLayout" name="formLayout">
-          <item row="3" column="0">
-           <widget class="QLabel" name="sightHeightLabel">
-            <property name="text">
-             <string>Sight Height</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="label_4">
-            <property name="text">
-             <string>Target Angle</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="zeroLabel">
-            <property name="text">
-             <string>Zero Range</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="maxRangeLabel">
-            <property name="text">
-             <string>Max Range</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="stepLabel">
-            <property name="text">
-             <string>Range Step</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="DoubleTextField" name="sightHeightField"/>
-          </item>
-          <item row="0" column="1">
-           <widget class="IntegerTextField" name="zeroRangeField"/>
-          </item>
-          <item row="1" column="1">
-           <widget class="IntegerTextField" name="maxRangeField"/>
-          </item>
-          <item row="2" column="1">
-           <widget class="IntegerTextField" name="rangeStepField"/>
-          </item>
-          <item row="4" column="1">
-           <widget class="DoubleTextField" name="targetAngleField"/>
-          </item>
-         </layout>
-        </item>
-       </layout>
       </widget>
-      <widget class="QWidget" name="page_3">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>292</width>
-         <height>243</height>
-        </rect>
+     </item>
+     <item row="0" column="1">
+      <widget class="DoubleTextField" name="velocityField">
+       <property name="text">
+        <string/>
        </property>
-       <attribute name="label">
-        <string>Conditions</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_3">
-        <item row="0" column="0">
-         <layout class="QFormLayout" name="formLayout_3">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_5">
-            <property name="text">
-             <string>Temp</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_6">
-            <property name="text">
-             <string>Humidity</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="label_7">
-            <property name="text">
-             <string>Altitude</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="label_8">
-            <property name="text">
-             <string>Pressure</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="label_9">
-            <property name="text">
-             <string>Density</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="label_10">
-            <property name="text">
-             <string>Mach</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="0">
-           <widget class="QLabel" name="label_11">
-            <property name="text">
-             <string>Use Std.</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="DoubleTextField" name="tempField"/>
-          </item>
-          <item row="1" column="1">
-           <widget class="DoubleTextField" name="humidityField"/>
-          </item>
-          <item row="2" column="1">
-           <widget class="DoubleTextField" name="altitudeField"/>
-          </item>
-          <item row="3" column="1">
-           <widget class="DoubleTextField" name="pressureField"/>
-          </item>
-          <item row="4" column="1">
-           <widget class="DoubleTextField" name="densityField"/>
-          </item>
-          <item row="5" column="1">
-           <widget class="DoubleTextField" name="machField"/>
-          </item>
-          <item row="6" column="1">
-           <widget class="QCheckBox" name="checkBox">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-       </layout>
       </widget>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="TrajTableView" name="tableView">
-      <attribute name="verticalHeaderVisible">
-       <bool>false</bool>
-      </attribute>
-     </widget>
-    </item>
-   </layout>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>From Chrono</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="DoubleTextField" name="chronoField"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="zeroLabel">
+       <property name="text">
+        <string>Zero Range</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="IntegerTextField" name="zeroRangeField"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="sightHeightLabel">
+       <property name="text">
+        <string>Sight Height</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="DoubleTextField" name="sightHeightField"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Temp</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="DoubleTextField" name="tempField"/>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Humidity</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="DoubleTextField" name="humidityField"/>
+     </item>
+     <item row="6" column="1">
+      <widget class="DoubleTextField" name="altitudeField"/>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>Pressure</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="DoubleTextField" name="pressureField"/>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>Density</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="DoubleTextField" name="densityField"/>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>Mach</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="DoubleTextField" name="machField">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="editMachButton">
+         <property name="toolTip">
+          <string>Select to enable editing of mach value.  If not selected the standard mach for the given elevation will be used.</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Altitude</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <zorder>bulletTreeView</zorder>
+   <zorder>tableView</zorder>
+   <zorder>toolbarFrame</zorder>
+   <zorder>horizontalLayoutWidget</zorder>
+   <zorder>formLayoutWidget_2</zorder>
+   <zorder>bcField</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>997</width>
+     <width>1106</width>
      <height>26</height>
     </rect>
    </property>
@@ -309,6 +462,11 @@ p, li { white-space: pre-wrap; }
    <addaction name="menuOptions"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionTest_action">
+   <property name="text">
+    <string>test_action</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
@@ -328,5 +486,41 @@ p, li { white-space: pre-wrap; }
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>rangeStepCombo</sender>
+   <signal>editTextChanged(QString)</signal>
+   <receiver>TrajFrame</receiver>
+   <slot>rangeStepEdit(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1014</x>
+     <y>605</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>498</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editMachButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>machField</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1000</x>
+     <y>545</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1041</x>
+     <y>522</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>rangeStepEdit(QString)</slot>
+ </slots>
 </ui>

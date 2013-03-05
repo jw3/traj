@@ -15,7 +15,7 @@ TrajFrame::TrajFrame(TrajBulletTreeModel* bulletModel, QWidget* parent)
 {
 	ui.setupUi(this);
 
-	ui.bulletCombo->setModel(bulletModel);
+	ui.bulletTreeView->setModel(bulletModel);
 
 	connect(ui.bcField, SIGNAL(returnPressed()), this, SLOT(calculateTrajectory()));
 	connect(this, SIGNAL(trajectoryUpdated(const traj::TrajectoryData&)), ui.tableView, SLOT(trajectoryChanged(const traj::TrajectoryData&)));
@@ -53,12 +53,12 @@ void TrajFrame::calculateTrajectory()
 		t.getZeroVector().setX(zeroRange);
 	}
 
-	auto maxRange = ui.maxRangeField->text().toDouble(&valid);
+	auto maxRange = ui.maxRangeField->currentText().toDouble(&valid);
 	if (valid) {
 		t.setMaximumRange(maxRange);
 	}
 
-	auto rangeStep = ui.rangeStepField->text().toDouble(&valid);
+	auto rangeStep = ui.rangeStepCombo->currentText().toDouble(&valid);
 	if (valid) {
 		t.setStepSize(rangeStep);
 	}
