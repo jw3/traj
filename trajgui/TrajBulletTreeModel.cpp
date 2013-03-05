@@ -78,7 +78,7 @@ QModelIndex TrajBulletTreeModel::parent(const QModelIndex& index) const
 	ITreeNode *childItem = static_cast<ITreeNode*>(index.internalPointer());
 	ITreeNode *parentItem = childItem->getParent();
 
-	if (parentItem == root){
+	if (parentItem == root) {
 		return QModelIndex();
 	}
 	return createIndex(parentItem->row(), 0, parentItem);
@@ -87,10 +87,10 @@ QModelIndex TrajBulletTreeModel::parent(const QModelIndex& index) const
 int TrajBulletTreeModel::rowCount(const QModelIndex& parent) const
 {
 	ITreeNode *parentItem;
-	if (!parent.isValid()){
+	if (!parent.isValid()) {
 		parentItem = static_cast<ITreeNode*>(root);
 	}
-	else{
+	else {
 		parentItem = static_cast<ITreeNode*>(parent.internalPointer());
 	}
 	return parentItem->childCount();
@@ -108,26 +108,37 @@ bool TrajBulletTreeModel::init(traj::TrajDatabase& db)
 		CaliberNode* caliberNode = new CaliberNode(caliber);
 		root->addChild(caliberNode);
 
-		std::stringstream where;
-		where << "caliber=";
-		where << caliber.getId();
-		auto bullets = db.getBullets(where.str().c_str());
-		for (auto bulletPair : bullets) {
-			auto bullet = bulletPair.second;
+		for (auto mfgPair : mfgs) {
+			auto mfg = mfgPair.second;
+			MfgNode* mfgNode = new MfgNode(mfg);
 
-			std::stringstream bulletName;
+			std::stringstream where;
+			where << "caliber=" << caliber.getId();
+			where << " and ";
+			where << "mfg=" << mfg.getId();
 
-			auto result = mfgs.find(bullet.getManufacturer());
+			auto bullets = db.getBullets(where.str().c_str());
 
-			//std::cout << bullet.getManufacturer() << ": " << mfgs.count(bullet.getManufacturer()) << std::endl;
-
-			if(result != mfgs.end()){
-				bulletName << result->second.getName() << " ";
+			if(!bullets.empty()){
+				caliberNode->addChild(mfgNode);
 			}
-			bulletName << bullet.getName();
+			for (auto bulletPair : bullets) {
+				auto bullet = bulletPair.second;
 
-			BulletNode* bulletNode = new BulletNode(bullet);
-			caliberNode->addChild(bulletNode);
+				std::stringstream bulletName;
+
+				auto result = mfgs.find(bullet.getManufacturer());
+
+				//std::cout << bullet.getManufacturer() << ": " << mfgs.count(bullet.getManufacturer()) << std::endl;
+
+				if (result != mfgs.end()) {
+					bulletName << result->second.getName() << " ";
+				}
+				bulletName << bullet.getName();
+
+				BulletNode* bulletNode = new BulletNode(bullet);
+				mfgNode->addChild(bulletNode);
+			}
 		}
 	}
 

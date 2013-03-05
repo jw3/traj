@@ -15,6 +15,7 @@
 #include <QVariant>
 
 #include "ITreeNode.h"
+#include "trajdb/MfgData.h"
 #include "trajdb/BulletData.h"
 #include "trajdb/CaliberData.h"
 
@@ -157,6 +158,17 @@ public:
 	{
 	}
 	virtual ~BulletNode() {}
+
+	virtual QVariant getVariantData() const { return QVariant(this->getData().getName()); }
+};
+
+class MfgNode : public DefaultTreeNode<traj::MfgData>
+{
+public:
+	MfgNode(const traj::MfgData& data) : DefaultTreeNode<traj::MfgData>(data)
+	{
+	}
+	virtual ~MfgNode() {}
 
 	virtual QVariant getVariantData() const { return QVariant(this->getData().getName()); }
 };
