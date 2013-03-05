@@ -314,7 +314,7 @@ p, li { white-space: pre-wrap; }
      <item row="0" column="1">
       <widget class="DoubleTextField" name="velocityField">
        <property name="text">
-        <string/>
+        <string>2500</string>
        </property>
       </widget>
      </item>
@@ -326,7 +326,11 @@ p, li { white-space: pre-wrap; }
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="DoubleTextField" name="chronoField"/>
+      <widget class="DoubleTextField" name="chronoField">
+       <property name="text">
+        <string>10</string>
+       </property>
+      </widget>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="zeroLabel">
@@ -336,7 +340,11 @@ p, li { white-space: pre-wrap; }
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="IntegerTextField" name="zeroRangeField"/>
+      <widget class="IntegerTextField" name="zeroRangeField">
+       <property name="text">
+        <string>100</string>
+       </property>
+      </widget>
      </item>
      <item row="3" column="0">
       <widget class="QLabel" name="sightHeightLabel">
@@ -346,7 +354,11 @@ p, li { white-space: pre-wrap; }
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="DoubleTextField" name="sightHeightField"/>
+      <widget class="DoubleTextField" name="sightHeightField">
+       <property name="text">
+        <string>1.5</string>
+       </property>
+      </widget>
      </item>
      <item row="4" column="0">
       <widget class="QLabel" name="label_5">
@@ -356,7 +368,11 @@ p, li { white-space: pre-wrap; }
       </widget>
      </item>
      <item row="4" column="1">
-      <widget class="DoubleTextField" name="tempField"/>
+      <widget class="DoubleTextField" name="tempField">
+       <property name="text">
+        <string>60</string>
+       </property>
+      </widget>
      </item>
      <item row="5" column="0">
       <widget class="QLabel" name="label_6">
@@ -366,10 +382,18 @@ p, li { white-space: pre-wrap; }
       </widget>
      </item>
      <item row="5" column="1">
-      <widget class="DoubleTextField" name="humidityField"/>
+      <widget class="DoubleTextField" name="humidityField">
+       <property name="text">
+        <string>78</string>
+       </property>
+      </widget>
      </item>
      <item row="6" column="1">
-      <widget class="DoubleTextField" name="altitudeField"/>
+      <widget class="DoubleTextField" name="altitudeField">
+       <property name="text">
+        <string>2000</string>
+       </property>
+      </widget>
      </item>
      <item row="7" column="0">
       <widget class="QLabel" name="label_8">
@@ -379,7 +403,11 @@ p, li { white-space: pre-wrap; }
       </widget>
      </item>
      <item row="7" column="1">
-      <widget class="DoubleTextField" name="pressureField"/>
+      <widget class="DoubleTextField" name="pressureField">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
      </item>
      <item row="8" column="0">
       <widget class="QLabel" name="label_9">
@@ -495,7 +523,7 @@ p, li { white-space: pre-wrap; }
    <hints>
     <hint type="sourcelabel">
      <x>1014</x>
-     <y>605</y>
+     <y>424</y>
     </hint>
     <hint type="destinationlabel">
      <x>498</x>
@@ -510,17 +538,34 @@ p, li { white-space: pre-wrap; }
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1000</x>
-     <y>545</y>
+     <x>1067</x>
+     <y>328</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1041</x>
-     <y>522</y>
+     <x>873</x>
+     <y>333</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bulletTreeView</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>TrajFrame</receiver>
+   <slot>setBulletModel(QModelIndex)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>328</x>
+     <y>267</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>520</x>
+     <y>289</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <slots>
   <slot>rangeStepEdit(QString)</slot>
+  <slot>setBulletModel(QModelIndex)</slot>
  </slots>
 </ui>

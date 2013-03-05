@@ -15,6 +15,8 @@
 #include <QVariant>
 
 #include "ITreeNode.h"
+#include "trajdb/BulletData.h"
+#include "trajdb/CaliberData.h"
 
 
 struct IVariantNode
@@ -36,7 +38,7 @@ class DefaultTreeNode : public ITreeNode, public IVariantNode
 		const T& getData() const { return data; }
 		void setData(T& data){ this->data = data; }
 
-		virtual QVariant getVariantData() const { return QVariant(this->getData()); }
+		virtual QVariant getVariantData() const = 0;
 
 		virtual ITreeNode* child(unsigned int idx) const
 		{
@@ -134,23 +136,30 @@ public:
 	{
 	}
 	virtual ~RootNode() {}
+
+	virtual QVariant getVariantData() const { return QVariant(this->getData()); }
 };
-class CaliberNode : public DefaultTreeNode<float>
+class CaliberNode : public DefaultTreeNode<traj::CaliberData>
 {
 public:
-	CaliberNode(float data) : DefaultTreeNode<float>(data)
+	CaliberNode(const traj::CaliberData& data) : DefaultTreeNode<traj::CaliberData>(data)
 	{
 	}
 	virtual ~CaliberNode() {}
+
+	virtual QVariant getVariantData() const { return QVariant(this->getData().getCaliber()); }
 };
 
-class BulletNode : public DefaultTreeNode<QString>
+class BulletNode : public DefaultTreeNode<traj::BulletData>
 {
 public:
-	BulletNode(const QString& data) : DefaultTreeNode<QString>(data)
+	BulletNode(const traj::BulletData& data) : DefaultTreeNode<traj::BulletData>(data)
 	{
 	}
 	virtual ~BulletNode() {}
+
+	virtual QVariant getVariantData() const { return QVariant(this->getData().getName()); }
 };
+
 
 #endif /* TREENODES_H_ */

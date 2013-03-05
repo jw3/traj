@@ -104,13 +104,13 @@ bool TrajBulletTreeModel::init(traj::TrajDatabase& db)
 	auto calibers = db.getCalibers();
 
 	for (auto calPair : calibers) {
-		auto cal = calPair.second;
-		CaliberNode* caliberNode = new CaliberNode(cal.getCaliber());
+		auto caliber = calPair.second;
+		CaliberNode* caliberNode = new CaliberNode(caliber);
 		root->addChild(caliberNode);
 
 		std::stringstream where;
 		where << "caliber=";
-		where << cal.getId();
+		where << caliber.getId();
 		auto bullets = db.getBullets(where.str().c_str());
 		for (auto bulletPair : bullets) {
 			auto bullet = bulletPair.second;
@@ -126,7 +126,7 @@ bool TrajBulletTreeModel::init(traj::TrajDatabase& db)
 			}
 			bulletName << bullet.getName();
 
-			BulletNode* bulletNode = new BulletNode(bulletName.str().c_str());
+			BulletNode* bulletNode = new BulletNode(bullet);
 			caliberNode->addChild(bulletNode);
 		}
 	}
