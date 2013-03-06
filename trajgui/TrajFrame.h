@@ -11,7 +11,6 @@
 #include <QMainWindow>
 #include <ui_TrajFrame.h>
 
-#include <iostream>
 #include <memory>
 #include <vector>
 
@@ -29,7 +28,7 @@ class TrajFrame: public QMainWindow
 
 	public slots:
 		void calculateTrajectory();
-		// TODO slot that take a bullet data object (from bullet treeview) and in turn sets all fields to the bullet param values
+		void setBulletModelIndex(QModelIndex);
 
 	signals:
 		void trajectoryUpdated(const traj::TrajectoryData&);

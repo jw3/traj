@@ -64,6 +64,16 @@ void BulletData::setWeight(float weight)
 	this->weight = weight;
 }
 
+int BulletData::getVelocity() const
+{
+	return velocity;
+}
+
+void BulletData::setVelocity(int velocity)
+{
+	this->velocity = velocity;
+}
+
 int BulletData::getManufacturer() const
 {
 	return manufacturer;

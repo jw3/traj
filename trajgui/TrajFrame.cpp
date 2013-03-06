@@ -7,6 +7,7 @@
 
 #include <traj/Trajectory.h>
 #include <traj/TrajBC.h>
+#include <trajdb/BulletData.h>
 
 #include "ValidationFields.h"
 
@@ -63,8 +64,20 @@ void TrajFrame::calculateTrajectory()
 		t.setStepSize(rangeStep);
 	}
 
-	std::cout << vel << std::endl;
-
 	emit
 	trajectoryUpdated(t.calculate());
+}
+
+void TrajFrame::setBulletModelIndex(QModelIndex index)
+{
+	BulletNode* node = dynamic_cast<BulletNode*>(static_cast<ITreeNode*>(index.internalPointer()));
+	if (node) {
+		const traj::BulletData& bulletData = node->getData();
+		ui.bcField->setValue(bulletData.getBc());
+		ui.dragCombo->setCurrentIndex(bulletData.getDragFx());
+		ui.weightSpinBox->setValue(bulletData.getWeight());
+
+		ui.velocityField->setText(QString(bulletData.getVelocity()));
+		//ui.chronoField->setText(QString(bulletData.getChronoDistance()));
+	}
 }

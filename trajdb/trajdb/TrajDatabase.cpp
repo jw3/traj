@@ -58,23 +58,22 @@ const char* TrajDatabase::getError() const
 	return !error.empty() ? error.c_str() : 0;
 }
 
-
 std::map<int, CaliberData> TrajDatabase::getCalibers(const char* where)
 {
-	return executeQuery<CaliberData>(db, caliberQueryCallback, "calibers", where, error);
+	return executeQuery<CaliberData>(db, caliberQueryCallback, "caliber", where, error);
 }
 
 std::map<int, BulletData> TrajDatabase::getBullets(const char* where)
 {
-	return executeQuery<BulletData>(db, bulletQueryCallback, "bullets", where, error);
+	return executeQuery<BulletData>(db, bulletQueryCallback, "bullet", where, error);
 }
 
 std::map<int, MfgData> TrajDatabase::getMfgs(const char* where)
 {
-	return executeQuery<MfgData>(db, mfgQueryCallback, "manufacturers", where, error);
+	return executeQuery<MfgData>(db, mfgQueryCallback, "manufacturer", where, error);
 }
 
-template <class T>
+template<class T>
 static std::map<int, T> executeQuery(sqlite3* db, sqlite3_callback callback, const char* table, const char* where, std::string& error)
 {
 	std::map<int, T> data;
@@ -131,59 +130,47 @@ static int bulletQueryCallback(void* pMap, int c, char** v, char** col)
 	std::map<int, BulletData>* map = static_cast<std::map<int, BulletData>*>(pMap);
 
 	BulletData bullet;
-	{
+	for (int i = 0; i < c; ++i) {
 		std::stringstream ss;
-		int id = 0;
-		ss << v[0];
-		ss >> id;
-		bullet.setId(id);
-		ss.clear();
-	}
-	{
-		std::stringstream ss;
-		float caliber = 0;
-		ss << v[1];
-		ss >> caliber;
-		bullet.setCaliber(caliber);
-		ss.clear();
-	}
-	{
-		std::stringstream ss;
-		float weight = 0;
-		ss << v[2];
-		ss >> weight;
-		bullet.setWeight(weight);
-		ss.clear();
-	}
-	{
-		std::stringstream ss;
-		float bc = 0;
-		ss << v[3];
-		ss >> bc;
-		bullet.setBc(bc);
-		ss.clear();
-	}
+		ss << v[i];
 
-	bullet.setName(v[4]);
-	// model = 5
-	bullet.setImage(v[6]);
+		if (std::string(col[i]) == "id") {
+			int val = -1;
+			ss >> val;
+			bullet.setId(val);
+		}
+		if (std::string(col[i]) == "caliber") {
+			float val = -1;
+			ss >> val;
+			bullet.setCaliber(val);
+		}
+		if (std::string(col[i]) == "weight") {
+			float weight = -1;
+			ss >> weight;
+			bullet.setWeight(weight);
+		}
+		if (std::string(col[i]) == "bc") {
+			float bc = 0;
+			ss >> bc;
+			bullet.setBc(bc);
+		}
+		if (std::string(col[i]) == "name") {
+			bullet.setName(v[i]);
+		}
+		if (std::string(col[i]) == "img") {
+			bullet.setImage(v[i]);
+		}
 
-	{
-		std::stringstream ss;
-		int mfg = 0;
-		ss << v[7];
-		std::cout << ss.str() << std::endl;
-		ss >> mfg;
-		bullet.setManufacturer(mfg);
-		ss.clear();
-	}
-	{
-		std::stringstream ss;
-		int fx = 0;
-		ss << v[8];
-		ss >> fx;
-		bullet.setDragFx(static_cast<DRAGFUNC>(fx));
-		ss.clear();
+		if (std::string(col[i]) == "mfg") {
+			int mfg = 0;
+			ss >> mfg;
+			bullet.setManufacturer(mfg);
+		}
+		if (std::string(col[i]) == "dragfx") {
+			int fx = 0;
+			ss >> fx;
+			bullet.setDragFx(static_cast<DRAGFUNC>(fx));
+		}
 	}
 
 	map->insert(std::make_pair(bullet.getId(), bullet));

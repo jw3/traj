@@ -124,18 +124,6 @@ bool TrajBulletTreeModel::init(traj::TrajDatabase& db)
 			}
 			for (auto bulletPair : bullets) {
 				auto bullet = bulletPair.second;
-
-				std::stringstream bulletName;
-
-				auto result = mfgs.find(bullet.getManufacturer());
-
-				//std::cout << bullet.getManufacturer() << ": " << mfgs.count(bullet.getManufacturer()) << std::endl;
-
-				if (result != mfgs.end()) {
-					bulletName << result->second.getName() << " ";
-				}
-				bulletName << bullet.getName();
-
 				BulletNode* bulletNode = new BulletNode(bullet);
 				mfgNode->addChild(bulletNode);
 			}

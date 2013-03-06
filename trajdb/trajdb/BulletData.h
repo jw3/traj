@@ -30,6 +30,9 @@ class BulletData : public IConcept
 		int getManufacturer() const;
 		void setManufacturer(int manufacturer);
 
+		int getVelocity() const;
+		void setVelocity(int velocity);
+
 		const char* getModel() const;
 		void setModel(const char* model);
 
@@ -49,6 +52,7 @@ class BulletData : public IConcept
 		float bc;
 		float weight;
 		float caliber;
+		int velocity;
 		int manufacturer;
 		std::string name;
 		std::string model;
