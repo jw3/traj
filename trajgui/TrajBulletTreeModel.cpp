@@ -118,14 +118,12 @@ bool TrajBulletTreeModel::init(traj::TrajDatabase& db)
 			where << "mfg=" << mfg.getId();
 
 			auto bullets = db.getBullets(where.str().c_str());
-
 			if(!bullets.empty()){
 				caliberNode->addChild(mfgNode);
 			}
 			for (auto bulletPair : bullets) {
 				auto bullet = bulletPair.second;
-				BulletNode* bulletNode = new BulletNode(bullet);
-				mfgNode->addChild(bulletNode);
+				mfgNode->addChild(new BulletNode(bullet));
 			}
 		}
 	}

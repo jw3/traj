@@ -590,17 +590,17 @@ p, li { white-space: pre-wrap; }
  <connections>
   <connection>
    <sender>rangeStepCombo</sender>
-   <signal>editTextChanged(QString)</signal>
+   <signal>currentIndexChanged(int)</signal>
    <receiver>TrajFrame</receiver>
-   <slot>rangeStepEdit(QString)</slot>
+   <slot>calculateTrajectory()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>1014</x>
      <y>424</y>
     </hint>
     <hint type="destinationlabel">
-     <x>498</x>
-     <y>199</y>
+     <x>567</x>
+     <y>350</y>
     </hint>
    </hints>
   </connection>
@@ -631,14 +631,110 @@ p, li { white-space: pre-wrap; }
      <y>139</y>
     </hint>
     <hint type="destinationlabel">
-     <x>557</x>
-     <y>135</y>
+     <x>497</x>
+     <y>246</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>velocityField</sender>
+   <signal>editingFinished()</signal>
+   <receiver>TrajFrame</receiver>
+   <slot>calculateTrajectory()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>835</x>
+     <y>62</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>660</x>
+     <y>59</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>chronoField</sender>
+   <signal>editingFinished()</signal>
+   <receiver>TrajFrame</receiver>
+   <slot>calculateTrajectory()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>837</x>
+     <y>85</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>646</x>
+     <y>87</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>zeroRangeField</sender>
+   <signal>editingFinished()</signal>
+   <receiver>TrajFrame</receiver>
+   <slot>calculateTrajectory()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>852</x>
+     <y>125</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>668</x>
+     <y>122</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sightHeightField</sender>
+   <signal>editingFinished()</signal>
+   <receiver>TrajFrame</receiver>
+   <slot>calculateTrajectory()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>859</x>
+     <y>153</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>648</x>
+     <y>150</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tempField</sender>
+   <signal>editingFinished()</signal>
+   <receiver>TrajFrame</receiver>
+   <slot>calculateTrajectory()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>179</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>672</x>
+     <y>185</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>maxRangeField</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>TrajFrame</receiver>
+   <slot>calculateTrajectory()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>880</x>
+     <y>412</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>620</x>
+     <y>358</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <slots>
-  <slot>rangeStepEdit(QString)</slot>
   <slot>setBulletModelIndex(QModelIndex)</slot>
+  <slot>calculateTrajectory()</slot>
  </slots>
 </ui>

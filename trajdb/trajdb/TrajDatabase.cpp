@@ -139,6 +139,11 @@ static int bulletQueryCallback(void* pMap, int c, char** v, char** col)
 			ss >> val;
 			bullet.setId(val);
 		}
+		if (std::string(col[i]) == "stdvel") {
+			int vel = 0;
+			ss >> vel;
+			bullet.setVelocity(vel);
+		}
 		if (std::string(col[i]) == "caliber") {
 			float val = -1;
 			ss >> val;

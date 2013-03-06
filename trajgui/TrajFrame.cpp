@@ -18,7 +18,6 @@ TrajFrame::TrajFrame(TrajBulletTreeModel* bulletModel, QWidget* parent)
 
 	ui.bulletTreeView->setModel(bulletModel);
 
-	connect(ui.bcField, SIGNAL(returnPressed()), this, SLOT(calculateTrajectory()));
 	connect(this, SIGNAL(trajectoryUpdated(const traj::TrajectoryData&)), ui.tableView, SLOT(trajectoryChanged(const traj::TrajectoryData&)));
 }
 
@@ -32,26 +31,35 @@ void TrajFrame::calculateTrajectory()
 
 	bool valid = false;
 
-	auto bc = ui.bcField->text().toDouble(&valid);
-	if (valid) {
-		traj::TrajBC tbc = t.getBC();
-		tbc.setBC(bc);
-		t.setBC(tbc);
-	}
+	auto bc = ui.bcField->value();
+	DRAGFUNC dragfn = (DRAGFUNC) ui.dragCombo->currentIndex();
+
+	traj::TrajBC tbc = t.getBC();
+	tbc.setDragFx(dragfn);
+	tbc.setBC(bc);
+	t.setBC(tbc);
+
+	auto weight = ui.weightSpinBox->value();
+	t.setBulletWeight(weight);
 
 	auto vel = ui.velocityField->text().toDouble(&valid);
 	if (valid) {
 		t.setVelocity(vel);
 	}
 
-	auto sightHeight = ui.sightHeightField->text().toDouble(&valid);
-	if (valid) {
-		t.setSightHeight(sightHeight);
-	}
-
 	auto zeroRange = ui.zeroRangeField->text().toDouble(&valid);
 	if (valid) {
 		t.getZeroVector().setX(zeroRange);
+	}
+
+	auto fromChrono = ui.chronoField->text().toDouble(&valid);
+	if (valid) {
+		t.setChronoDistance(fromChrono);
+	}
+
+	auto sightHeight = ui.sightHeightField->text().toDouble(&valid);
+	if (valid) {
+		t.setSightHeight(sightHeight);
 	}
 
 	auto maxRange = ui.maxRangeField->currentText().toDouble(&valid);
@@ -77,7 +85,11 @@ void TrajFrame::setBulletModelIndex(QModelIndex index)
 		ui.dragCombo->setCurrentIndex(bulletData.getDragFx());
 		ui.weightSpinBox->setValue(bulletData.getWeight());
 
-		ui.velocityField->setText(QString(bulletData.getVelocity()));
+		std::stringstream ss;
+		ss << bulletData.getVelocity();
+		ui.velocityField->setText(QString(ss.str().c_str()));
 		//ui.chronoField->setText(QString(bulletData.getChronoDistance()));
+
+		calculateTrajectory();
 	}
 }
