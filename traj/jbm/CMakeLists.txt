@@ -1,0 +1,16 @@
+project(traj2)
+cmake_minimum_required(VERSION 2.8)
+
+message("building JBM lib")
+
+add_library(jbm-atmos atmos.c)
+add_library(jbm-bc bc.c)
+add_library(jbm-bct bct.c)
+add_library(jbm-bcv bcv.c)
+add_library(jbm-drag drag.c)
+add_library(jbm-maxd maxdist.c)
+add_library(jbm-mcdrag mcdrag.c)
+add_library(jbm-options options.c)
+add_library(jbm-pbrange pbrange.c)
+add_library(jbm-traj traj.c)
+add_library(jbm-vectors vectors.c)
