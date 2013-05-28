@@ -9,7 +9,6 @@
 #define TRAJFRAME_H_
 
 #include <QMainWindow>
-#include <ui_TrajFrame.h>
 
 #include <memory>
 #include <vector>
@@ -18,9 +17,15 @@
 #include <traj/Trajectory.h>
 #include "TrajBulletTreeModel.h"
 
-class TrajFrame: public QMainWindow
+namespace Ui
 {
-    Q_OBJECT
+class TrajFrame;
+}
+
+class TrajFrame :
+		public QMainWindow
+{
+	Q_OBJECT
 
 	public:
 		TrajFrame(TrajBulletTreeModel* bulletModel, QWidget* parent = 0);
@@ -33,11 +38,8 @@ class TrajFrame: public QMainWindow
 	signals:
 		void trajectoryUpdated(const traj::TrajectoryData&);
 
-
 	private:
-		Ui::TrajFrame ui;
-		std::shared_ptr<traj::TrajDatabase> db;
-
+		std::unique_ptr<Ui::TrajFrame> ui;
 		TrajBulletTreeModel* bulletModel;
 };
 
